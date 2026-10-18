@@ -146,7 +146,7 @@ func cast_time_stop_barrage() -> void:
 	var target = get_nearest_player()
 	
 	if is_instance_valid(target):
-		var ring_radius := 130.0
+		var ring_radius := 250.0
 		var num_projectiles := 6
 		
 		# Teleport in a circle around the frozen player, placing projectiles in mid-air

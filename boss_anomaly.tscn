@@ -70,7 +70,7 @@ boss_projectile_scene = ExtResource("3_w5ail")
 position = Vector2(0.5, 1.9999971)
 scale = Vector2(0.4765625, 0.765625)
 sprite_frames = SubResource("SpriteFrames_wqqhl")
-animation = &"Walk"
+animation = &"Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1498011265]
 shape = SubResource("RectangleShape2D_mt2yp")

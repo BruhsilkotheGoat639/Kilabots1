@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var enemy_scene: PackedScene
-@export var total_enemies_to_spawn: int = 10
+@export var total_enemies_to_spawn: int = 20
 @export var spawn_interval: float = 0.8
 
 @onready var spawner: Marker2D = $HordeSpawner if has_node("HordeSpawner") else $"../HordeSpawner"

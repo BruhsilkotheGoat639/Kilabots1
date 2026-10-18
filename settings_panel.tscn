@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ddsxxvyfo2ij1"]
+
+[ext_resource type="Script" uid="uid://btawgu0d0yodj" path="res://settings_panel.gd" id="1_qe5rj"]
+
+[node name="SettingsPanel" type="CanvasLayer" unique_id=1398613698]
+process_mode = 3
+script = ExtResource("1_qe5rj")
+
+[node name="SettingsPanel" type="ColorRect" parent="." unique_id=1644912358]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 251.0
+offset_top = 186.0
+offset_right = -205.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel" unique_id=919507866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer" unique_id=1601564405]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+
+[node name="Back" type="Button" parent="SettingsPanel/VBoxContainer" unique_id=1540195611]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = "Back"
+
+[node name="FullScreen" type="Label" parent="." unique_id=503799484]
+offset_left = 283.0
+offset_top = 335.0
+offset_right = 1107.0
+offset_bottom = 358.0
+text = "FullScreen"
+
+[node name="FullScreenToggle" type="CheckButton" parent="FullScreen" unique_id=1514253402]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 3.0
+offset_right = 146.0
+offset_bottom = 27.0
+
+[connection signal="pressed" from="SettingsPanel/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="FullScreen/FullScreenToggle" to="." method="_on_full_screen_toggle_toggled"]
