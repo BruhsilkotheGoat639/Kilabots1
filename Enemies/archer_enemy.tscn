@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1rna5mimd5uh" path="res://archer_enemy.gd" id="1_lhhw4"]
 [ext_resource type="PackedScene" uid="uid://htnakrenf8t6" path="res://enemy_arrow.tscn" id="2_7gok4"]
-[ext_resource type="Texture2D" uid="uid://dogx24h21gny4" path="res://Sprites/archer enemy/archer attack.png" id="3_yxl5v"]
-[ext_resource type="Texture2D" uid="uid://dak61dd7s4a4i" path="res://Sprites/archer enemy/archer idle.png" id="4_0wclx"]
+[ext_resource type="Texture2D" uid="uid://c2230hytenq56" path="res://Sprites/archer enemy/Archer_attac.png" id="3_yxl5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53x37"]
 size = Vector2(39, 47)
@@ -11,41 +10,28 @@ size = Vector2(39, 47)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgew0"]
 radius = 249.72385
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wclx"]
+atlas = ExtResource("3_yxl5v")
+region = Rect2(0, 0, 1024, 512)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1sy1"]
 atlas = ExtResource("3_yxl5v")
-region = Rect2(0, 154, 426, 366)
+region = Rect2(1024, 0, 1024, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uorar"]
 atlas = ExtResource("3_yxl5v")
-region = Rect2(431, 154, 431, 365)
+region = Rect2(2048, 0, 1024, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afs7t"]
 atlas = ExtResource("3_yxl5v")
-region = Rect2(855, 154, 425, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ri8v"]
-atlas = ExtResource("3_yxl5v")
-region = Rect2(1331, 154, 442, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w0r6h"]
-atlas = ExtResource("4_0wclx")
-region = Rect2(0, 0, 543, 724)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vresu"]
-atlas = ExtResource("4_0wclx")
-region = Rect2(543, 0, 543, 724)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4dli"]
-atlas = ExtResource("4_0wclx")
-region = Rect2(1086, 0, 543, 724)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0aulf"]
-atlas = ExtResource("4_0wclx")
-region = Rect2(1629, 0, 543, 724)
+region = Rect2(3072, 0, 1024, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pyim0"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wclx")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w1sy1")
 }, {
@@ -54,27 +40,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_afs7t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ri8v")
 }],
 "loop": 0,
 "name": &"Attack",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w0r6h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vresu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f4dli")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0aulf")
-}],
+"frames": [],
 "loop": 1,
 "name": &"Idle",
 "speed": 5.0
@@ -101,9 +72,7 @@ shape = SubResource("CircleShape2D_jgew0")
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=2001293753]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_pyim0")
-animation = &"Attack"
-frame = 3
-frame_progress = 1.0
+animation = &"Idle"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

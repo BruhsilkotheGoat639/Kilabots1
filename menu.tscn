@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bm8da74orhvli"]
 
 [ext_resource type="Script" uid="uid://tbiv3hrpkuba" path="res://menu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://dqblk37i12bsl" path="res://Sprites/GAME BACKGROUND.jpg" id="2_ouk20"]
 
 [node name="Menu" type="Control" unique_id=1693318290]
 layout_mode = 3
@@ -11,33 +12,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lti8b")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=308659877]
+[node name="Background" type="TextureRect" parent="." unique_id=95769693]
 layout_mode = 0
-offset_left = 306.0
-offset_top = 382.0
-offset_right = 1008.0
-offset_bottom = 487.0
+offset_left = 6.1035156e-05
+offset_top = -8.9999695
+offset_right = 1748.0
+offset_bottom = 1231.0
+scale = Vector2(0.7334096, 0.61129034)
+texture = ExtResource("2_ouk20")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=308659877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = 422.0
+offset_right = -148.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Start" type="Button" parent="HBoxContainer" unique_id=545838718]
 layout_mode = 2
 text = "Start
 "
 
-[node name="Label" type="Label" parent="." unique_id=678656888]
-layout_mode = 0
-offset_left = 984.0
-offset_top = 16.0
-offset_right = 1024.0
-offset_bottom = 39.0
-text = "Player 1 Controls:
-WASD = Movement
-G = Attack
+[node name="Settings" type="Button" parent="HBoxContainer" unique_id=1031206403]
+layout_mode = 2
+text = "Settings"
 
-Player 2 Controls:
-UP, Down,
-Left, RIght Arrows = Movement
-Numpad 0 = Aim
-Numpad 2 = Shoot
-Left Click = Plane shoot"
+[node name="Quit" type="Button" parent="HBoxContainer" unique_id=1888184557]
+layout_mode = 2
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=758894329]
+position = Vector2(643, 371)
 
 [connection signal="pressed" from="HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit_pressed"]
