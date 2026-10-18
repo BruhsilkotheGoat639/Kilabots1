@@ -64,7 +64,7 @@ _data = {
 &"RESET": SubResource("Animation_qb8r4")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssk5q"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3eqq"]
 texture = ExtResource("1_4ssgj")
 0:0/0 = 0
 1:0/0 = 0
@@ -238,21 +238,21 @@ texture = ExtResource("1_4ssgj")
 10:11/0 = 0
 11:11/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7u31o"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssk5q"]
 texture = ExtResource("2_0xm0r")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_favob"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7u31o"]
 texture = ExtResource("3_dsiqx")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1i7gs"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_favob"]
 texture = ExtResource("4_igpn7")
 0:0/0 = 0
 1:0/0 = 0
@@ -582,7 +582,7 @@ texture = ExtResource("4_igpn7")
 16:4/0 = 0
 16:4/0/z_index = 1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qaocd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1i7gs"]
 texture = ExtResource("5_461lk")
 0:0/0 = 0
 1:0/0 = 0
@@ -669,13 +669,13 @@ texture = ExtResource("5_461lk")
 9:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3pvdk"]
-sources/0 = SubResource("TileSetAtlasSource_ssk5q")
-sources/1 = SubResource("TileSetAtlasSource_7u31o")
-sources/2 = SubResource("TileSetAtlasSource_favob")
-sources/3 = SubResource("TileSetAtlasSource_1i7gs")
-sources/4 = SubResource("TileSetAtlasSource_qaocd")
+sources/0 = SubResource("TileSetAtlasSource_p3eqq")
+sources/1 = SubResource("TileSetAtlasSource_ssk5q")
+sources/2 = SubResource("TileSetAtlasSource_7u31o")
+sources/3 = SubResource("TileSetAtlasSource_favob")
+sources/4 = SubResource("TileSetAtlasSource_1i7gs")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4px55"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qaocd"]
 texture = ExtResource("1_4ssgj")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 6.9245605, 7, 8, 7, -6.726717, -7, -6.5288725)
@@ -862,9 +862,9 @@ texture = ExtResource("1_4ssgj")
 [sub_resource type="TileSet" id="TileSet_okd2m"]
 tile_size = Vector2i(14, 16)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_4px55")
+sources/0 = SubResource("TileSetAtlasSource_qaocd")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1riy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3pvdk"]
 texture = ExtResource("1_4ssgj")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1215,9 +1215,9 @@ texture = ExtResource("1_4ssgj")
 [sub_resource type="TileSet" id="TileSet_t3skj"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_c1riy")
+sources/0 = SubResource("TileSetAtlasSource_3pvdk")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3r45b"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4px55"]
 texture = ExtResource("1_4ssgj")
 0:0/0 = 0
 1:0/0 = 0
@@ -1391,7 +1391,7 @@ texture = ExtResource("1_4ssgj")
 10:11/0 = 0
 11:11/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ytuw7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_okd2m"]
 texture = ExtResource("4_igpn7")
 0:0/0 = 0
 1:0/0 = 0
@@ -1739,7 +1739,7 @@ texture = ExtResource("4_igpn7")
 18:19/0 = 0
 19:19/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oyigm"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1riy"]
 texture = ExtResource("5_461lk")
 0:0/0 = 0
 1:0/0 = 0
@@ -1850,9 +1850,9 @@ texture = ExtResource("5_461lk")
 5:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ytn38"]
-sources/0 = SubResource("TileSetAtlasSource_3r45b")
-sources/1 = SubResource("TileSetAtlasSource_ytuw7")
-sources/2 = SubResource("TileSetAtlasSource_oyigm")
+sources/0 = SubResource("TileSetAtlasSource_4px55")
+sources/1 = SubResource("TileSetAtlasSource_okd2m")
+sources/2 = SubResource("TileSetAtlasSource_c1riy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssk5q"]
 size = Vector2(380.5, 103)
@@ -1894,41 +1894,45 @@ tile_set = SubResource("TileSet_t3skj")
 tile_map_data = PackedByteArray("AAAlACwAAgAGAAMAAAAmACwAAgAHAAMAAAAlAC0AAgAAAAkAAAAmAC0AAgABAAkAAAAnAC0AAgAAAAkAAAAoAC0AAgABAAkAAAApACwAAgAHAAMAAAAqACwAAgAGAAIAAAAnACwAAgAAAAkAAAAoACwAAgAGAAMAAAApAC0AAgAAAAkAAAAqAC0AAgAGAAMAAAArAC0AAgAHAAMAAAAsAC0AAgABAAkAAAAlACsAAgAGAAIAAAAmACsAAgAHAAIAAAArACwAAgAHAAIAAAAoACsAAgAGAAIAAAApACsAAgAHAAIAAAAzACwAAgABAAkAAAAzAC0AAgABAAkAAAA0ACwAAgAHAAIAAAA0AC0AAgAAAAkAAAA1ACwAAgAGAAIAAAA1AC0AAgABAAkAAAA2ACwAAgAAAAkAAAA2AC0AAgAAAAkAAAA3ACwAAgABAAkAAAA3AC0AAgABAAkAAAA4ACwAAgACAAEAAAA4AC0AAgABAAkAAAAxACwAAgABAAkAAAAxAC0AAgAGAAMAAAAyACwAAgAAAAkAAAAyAC0AAgAAAAkAAABCACwAAgAJAAMAAABCAC0AAgAJAAMAAABDACwAAgAJAAMAAABDAC0AAgAIAAMAAABDACoAAgAJAAMAAABDACsAAgAIAAMAAABEACoAAgAIAAMAAABEACsAAgAJAAMAAABEACwAAgAIAAMAAABEAC0AAgAJAAMAAABFACsAAgAJAAMAAABFACwAAgAAAAkAAABFAC0AAgAIAAMAAABGACwAAgABAAkAAABGAC0AAgAAAAkAAABIACwAAgAAAAkAAABIAC0AAgAIAAMAAABJACwAAgAAAAkAAABJAC0AAgAJAAMAAABGACsAAgAIAAMAAABHACsAAgAJAAMAAABHACwAAgAJAAMAAABBACwAAgAIAAMAAABBAC0AAgABAAkAAABGACoAAgAIAAMAAABHACoAAgAJAAMAAABIACoAAgAIAAMAAABIACsAAgAJAAMAAABJACoAAgAJAAMAAABJACsAAgAJAAMAAABKACoAAgAIAAIAAABKACsAAgAIAAMAAABLACoAAgACAAAAAABLACsAAgACAAEAAABKACwAAgABAAkAAABKAC0AAgAIAAMAAABLACwAAgAIAAMAAABLAC0AAgAAAAkAAAA/ACsAAgACAAEAAAA/ACwAAgAIAAMAAABAACsAAgADAAEAAABAACwAAgAJAAMAAABCACsAAgAJAAMAAABBACsAAgAIAAMAAABFACoAAgAJAAMAAABAACoAAgADAAAAAABBACoAAgAIAAIAAABGACkAAgAIAAIAAABHACkAAgAJAAIAAABCACoAAgAIAAMAAABEACkAAgAIAAIAAABFACkAAgAJAAIAAABCACkAAgAIAAIAAABDACkAAgAJAAIAAABIACkAAgAIAAIAAABJACkAAgAJAAIAAABMACsAAgADAAEAAABMACwAAgAJAAMAAAA4ACsAAgACAAAAAAA5ACsAAgADAAAAAAA5ACwAAgADAAEAAAA/ACoAAgACAAAAAABMACoAAgADAAAAAABHAC0AAgABAAkAAABAAC0AAgAAAAkAAABMAC0AAgAAAAkAAABNAC0AAgABAAkAAAA5AC0AAgAAAAkAAAA6AC0AAgABAAkAAAAwACwAAgAAAAkAAAA2ACsAAgABAAkAAAA3ACsAAgABAAkAAAA0ACsAAgABAAkAAAA1ACsAAgAAAAkAAAAzACsAAgABAAkAAAAxACsAAgAAAAkAAAAyACsAAgAAAAkAAAA6ACwAAgAAAAkAAAA7ACwAAgABAAkAAAA6ACsAAgAAAAkAAAA7ACsAAgAAAAkAAAA8ACsAAgABAAkAAAA3ACoAAgAAAAkAAAA4ACoAAgABAAkAAAA1ACoAAgABAAkAAAA2ACoAAgABAAkAAAA0ACoAAgABAAkAAAAzACoAAgAAAAkAAAASAAsAAQASAAQAAAASAAwAAQASAAUAAAATAAsAAQATAAQAAAATAAwAAQATAAUAAAAcAAQAAQAQAAQAAAAcAAUAAQAQAAUAAAAdAAQAAQARAAQAAAAdAAUAAQARAAUAAAAYAAcAAQAQAAQAAAAYAAgAAQAQAAUAAAAZAAcAAQARAAQAAAAZAAgAAQARAAUAAAA+AAQAAQAQAAQAAAA+AAUAAQAQAAUAAAA/AAQAAQARAAQAAAA/AAUAAQARAAUAAABAAAYAAQAQAAQAAABAAAcAAQAQAAUAAABBAAYAAQARAAQAAABBAAcAAQARAAUAAABCAAkAAQAQAAQAAABCAAoAAQAQAAUAAABDAAkAAQARAAQAAABDAAoAAQARAAUAAABEAAoAAQAQAAQAAABEAAsAAQAQAAUAAABFAAoAAQARAAQAAABFAAsAAQARAAUAAAAxAAIAAQAQAAQAAAAxAAMAAQAQAAUAAAAyAAIAAQARAAQAAAAyAAMAAQARAAUAAAA1AAcAAQAQAAQAAAA1AAgAAQAQAAUAAAA2AAcAAQARAAQAAAA2AAgAAQARAAUAAAAlAAQAAQAQAAQAAAAlAAUAAQAQAAUAAAAmAAQAAQARAAQAAAAmAAUAAQARAAUAAAAsAAUAAQAQAAQAAAAsAAYAAQAQAAUAAAAtAAUAAQARAAQAAAAtAAYAAQARAAUAAAAoAAgAAQAQAAQAAAAoAAkAAQAQAAUAAAApAAgAAQARAAQAAAApAAkAAQARAAUAAAAnAA0AAQAQAAQAAAAnAA4AAQAQAAUAAAAoAA0AAQARAAQAAAAoAA4AAQARAAUAAAArAA0AAQAQAAQAAAArAA4AAQAQAAUAAAAsAA0AAQARAAQAAAAsAA4AAQARAAUAAAC5ACcAAQAJAA4AAAC5ACgAAQAJAA8AAAC5ACkAAQAJABAAAAC5ACoAAQAJABEAAAC5ACsAAQAJABIAAAC5ACwAAQAJABMAAAC6ACcAAQASAAgAAAC6ACgAAQASAAkAAAC6ACkAAQAKABAAAAC6ACoAAQAKABEAAAC6ACsAAQAKABIAAAC6ACwAAQAKABMAAAC7ACcAAQATAAgAAAC7ACgAAQATAAkAAAC7ACkAAQALABAAAAC7ACoAAQALABEAAAC7ACsAAQALABIAAAC7ACwAAQALABMAAAC8ACcAAQAMAA4AAAC8ACgAAQAMAA8AAAC8ACkAAQAMABAAAAC8ACoAAQAMABEAAAC8ACsAAQAMABIAAAC8ACwAAQAMABMAAAC1ACcAAQAJAA4AAAC1ACgAAQAJAA8AAAC1ACkAAQAJABAAAAC1ACoAAQAJABEAAAC1ACsAAQAJABIAAAC1ACwAAQAJABMAAAC2ACcAAQASAAgAAAC2ACgAAQASAAkAAAC2ACkAAQAKABAAAAC2ACoAAQAKABEAAAC2ACsAAQAKABIAAAC2ACwAAQAKABMAAAC3ACcAAQATAAgAAAC3ACgAAQATAAkAAAC3ACkAAQALABAAAAC3ACoAAQALABEAAAC3ACsAAQALABIAAAC3ACwAAQALABMAAAC4ACcAAQAMAA4AAAC4ACgAAQAMAA8AAAC4ACkAAQAMABAAAAC4ACoAAQAMABEAAAC4ACsAAQAMABIAAAC4ACwAAQAMABMAAAC7ABsAAQASAAQAAAC7ABwAAQASAAUAAAC7AB0AAQASAAYAAAC7AB4AAQASAAcAAAC7AB8AAQASAAgAAAC7ACAAAQASAAkAAAC8ABsAAQATAAQAAAC8ABwAAQATAAUAAAC8AB0AAQATAAYAAAC8AB4AAQATAAcAAAC8AB8AAQATAAgAAAC8ACAAAQATAAkAAACsABMAAQASAAQAAACsABQAAQASAAUAAACsABUAAQASAAYAAACsABYAAQASAAcAAACsABcAAQASAAgAAACsABgAAQASAAkAAACtABMAAQATAAQAAACtABQAAQATAAUAAACtABUAAQATAAYAAACtABYAAQATAAcAAACtABcAAQATAAgAAACtABgAAQATAAkAAACwABkAAQASAAQAAACwABoAAQASAAUAAACwABsAAQASAAYAAACwABwAAQASAAcAAACwAB0AAQASAAgAAACwAB4AAQASAAkAAACxABkAAQATAAQAAACxABoAAQATAAUAAACxABsAAQATAAYAAACxABwAAQATAAcAAACxAB0AAQATAAgAAACxAB4AAQATAAkAAAC2ACMAAQASAAQAAAC2ACQAAQASAAUAAAC2ACUAAQASAAYAAAC2ACYAAQASAAcAAAC3ACMAAQATAAQAAAC3ACQAAQATAAUAAAC3ACUAAQATAAYAAAC3ACYAAQATAAcAAAC6ACMAAQASAAQAAAC6ACQAAQASAAUAAAC6ACUAAQASAAYAAAC6ACYAAQASAAcAAAC7ACMAAQATAAQAAAC7ACQAAQATAAUAAAC7ACUAAQATAAYAAAC7ACYAAQATAAcAAAA=")
 tile_set = SubResource("TileSet_ytn38")
 
-[node name="ArcherEnemy" parent="Worldstuff" unique_id=1713821377 instance=ExtResource("7_igpn7")]
-position = Vector2(535, 544)
-collision_layer = 4
+[node name="MeleeEnemy2" parent="." unique_id=2139220090 instance=ExtResource("8_461lk")]
+position = Vector2(739, 405)
+collision_mask = 7
 
-[node name="ArcherEnemy4" parent="Worldstuff" unique_id=442074471 instance=ExtResource("7_igpn7")]
-position = Vector2(1672, 504)
-collision_layer = 4
-
-[node name="ArcherEnemy3" parent="Worldstuff" unique_id=747657257 instance=ExtResource("7_igpn7")]
-position = Vector2(749, 566)
-collision_layer = 4
-
-[node name="ArcherEnemy5" parent="Worldstuff" unique_id=1889253542 instance=ExtResource("7_igpn7")]
-position = Vector2(2037, 574)
-collision_layer = 4
-
-[node name="ArcherEnemy6" parent="Worldstuff" unique_id=1594765449 instance=ExtResource("7_igpn7")]
-position = Vector2(2276, 536)
-collision_layer = 4
-
-[node name="ArcherEnemy6" parent="Worldstuff/ArcherEnemy6" unique_id=342565533 instance=ExtResource("7_igpn7")]
-position = Vector2(276, 31)
-collision_layer = 4
-
-[node name="ArcherEnemy2" parent="Worldstuff" unique_id=464239429 instance=ExtResource("7_igpn7")]
-position = Vector2(974, 564)
-collision_layer = 4
-
-[node name="MeleeEnemy" parent="Worldstuff" unique_id=164289940 instance=ExtResource("8_461lk")]
+[node name="MeleeEnemy" parent="." unique_id=164289940 instance=ExtResource("8_461lk")]
 position = Vector2(337, 362)
 collision_mask = 7
 
-[node name="MeleeEnemy2" parent="Worldstuff" unique_id=2139220090 instance=ExtResource("8_461lk")]
-position = Vector2(739, 405)
-collision_mask = 7
+[node name="ArcherEnemy2" parent="." unique_id=464239429 instance=ExtResource("7_igpn7")]
+position = Vector2(974, 564)
+collision_layer = 4
+
+[node name="ArcherEnemy6" parent="." unique_id=1594765449 instance=ExtResource("7_igpn7")]
+position = Vector2(2276, 536)
+collision_layer = 4
+
+[node name="ArcherEnemy7" parent="." unique_id=342565533 instance=ExtResource("7_igpn7")]
+position = Vector2(2552, 567)
+collision_layer = 4
+
+[node name="ArcherEnemy8" parent="." unique_id=1713821377 instance=ExtResource("7_igpn7")]
+position = Vector2(2730, 568)
+collision_layer = 4
+
+[node name="ArcherEnemy5" parent="." unique_id=1889253542 instance=ExtResource("7_igpn7")]
+position = Vector2(2037, 574)
+collision_layer = 4
+
+[node name="ArcherEnemy3" parent="." unique_id=747657257 instance=ExtResource("7_igpn7")]
+position = Vector2(749, 566)
+collision_layer = 4
+
+[node name="ArcherEnemy4" parent="." unique_id=442074471 instance=ExtResource("7_igpn7")]
+position = Vector2(1672, 504)
+collision_layer = 4
+
+[node name="ArcherEnemy" parent="." unique_id=5317324 instance=ExtResource("7_igpn7")]
+position = Vector2(535, 544)
+collision_layer = 4
 
 [node name="Players" type="Node" parent="." unique_id=1585281095]
 
