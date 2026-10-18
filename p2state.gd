@@ -19,22 +19,29 @@ const PLATFORM_LAYER := 2
 var active_state := STATE.IDLE
 var facing_direction := 1.0 
 var last_down_time := 0.0
-var health := 150
+var max_health := 100
+var health := 100
 
 @export var arrow_scene: PackedScene 
 
 @onready var pivot: Marker2D = $Pivot
 @onready var muzzle: Marker2D = $Pivot/Muzzle
 @onready var anim: AnimatedSprite2D = $Animation
+@onready var health_bar: ProgressBar = $Healthbar/bar  # Targets the ProgressBar inside your Healthbar node
+
+func _ready() -> void:
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = health
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("P2Left", "P2Right")
 	
-	# Update facing direction (allows the player to turn around while aiming in place)
+	
 	if direction != 0 and active_state != STATE.ATTACK:
 		facing_direction = sign(direction)
 		pivot.scale.x = facing_direction
-		# --- NEW: Flip the visual sprite horizontally ---
+		
 		anim.flip_h = (facing_direction < 0)
 	
 	match active_state:
@@ -73,7 +80,7 @@ func _physics_process(delta: float) -> void:
 				switch_state(STATE.IDLE)
 				
 		STATE.AIM:
-			# Decelerate horizontal movement to 0 to root the player in place
+			
 			velocity.x = move_toward(velocity.x, 0, WALK_VELOCITY * delta * 10)
 			
 			if not is_on_floor():
@@ -94,18 +101,15 @@ func _physics_process(delta: float) -> void:
 			if not is_on_floor():
 				velocity.y += GRAVITY * delta
 
-	# --- NEW: Global Animation Handling ---
-	# Checks what the player is doing and plays the corresponding exact animation name
+	
 	if is_on_floor():
 		if active_state == STATE.AIM or active_state == STATE.ATTACK:
-			# If aiming or shooting, play the aiming animation
 			anim.play("Aiming_Shoot")
 		elif direction != 0:
 			anim.play("Walk")
 		else:
 			anim.play("Idle")
 	else:
-		# If in the air, check if they are aiming first
 		if active_state == STATE.AIM or active_state == STATE.ATTACK:
 			anim.play("Aiming_Shoot")
 		elif velocity.y < 0:
@@ -175,13 +179,22 @@ func shoot_arrow() -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
-	print(name, " took damage! Health is now: ", health)
+	health = max(health, 0) # Keeps health from going below 0
+	
+	# --- UPDATE HEALTH BAR ---
+	if health_bar:
+		health_bar.value = health
+	# -------------------------
+	
+	print(name, " took damage! Health is now: ", health)#[cite: 5]
 	
 	if health <= 0:
 		print(name, " died!")
 		remove_from_group("player")
 		set_physics_process(false) 
 		$CollisionShape2D.set_deferred("disabled", true)
+		if health_bar:
+			health_bar.visible = false # Hides the bar on death
 		anim.play("Death")
 		await anim.animation_finished
 		queue_free()

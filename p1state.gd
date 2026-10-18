@@ -17,7 +17,8 @@ const DOUBLE_TAP_WINDOW := 0.25
 var last_down_time := 0.0
 const PLATFORM_LAYER := 2 
 
-var health = 150
+var max_health := 150
+var health := 150
 var active_state := STATE.IDLE
 var facing_direction := 1.0 
 var damage_amount = 30
@@ -26,11 +27,17 @@ var damage_amount = 30
 @onready var hitbox_shape: CollisionShape2D = $Pivot/Hitbox/CollisionShape2D
 @onready var hitbox: Area2D = $Pivot/Hitbox
 @onready var anim: AnimatedSprite2D = $Animation
-@onready var attack_anim_player: AnimationPlayer = $AttackAnimation # --- NEW: Reference to the AnimationPlayer ---
+@onready var attack_anim_player: AnimationPlayer = $AttackAnimation
+@onready var health_bar: ProgressBar = $Healthbar_p1/healthbar_p1  # Matches your scene tree path
 
 func _ready() -> void:
 	hitbox_shape.disabled = true
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
+	
+	# Initialize health bar bounds and starting value
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = health
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("P1Left", "P1Right")
@@ -120,15 +127,17 @@ func drop_through_platform() -> void:
 	set_collision_mask_value(PLATFORM_LAYER, true)
 
 
-# --- UPDATED: Delegate hitbox and frame control entirely to the AnimationPlayer ---
 func perform_attack() -> void:
-	# Prepare the AnimatedSprite2D and yield control
 	anim.animation = "Attack"
 	anim.stop()
-	health += 5
-	print("Player Lifesteal 5 hp!")
 	
-	# Play the AnimationPlayer timeline
+	# --- LIFESTEAL & HEALTH BAR UPDATE ---
+	health = min(health + 5, max_health) # Increases health by 5 without exceeding max health (150)
+	if health_bar:
+		health_bar.value = health
+	print("Player Lifesteal 5 hp! Health is now: ", health)
+	# ------------------------------------
+	
 	attack_anim_player.play("AttackAnimation")
 	await attack_anim_player.animation_finished
 	
@@ -136,7 +145,6 @@ func perform_attack() -> void:
 		switch_state(STATE.IDLE)
 	else:
 		switch_state(STATE.FALL)
-# ----------------------------------------------------------------------------------
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
@@ -146,9 +154,15 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			print("Hit enemy for ", damage_amount, " damage!")
 
 
-
 func take_damage(amount: int) -> void:
 	health -= amount
+	health = max(health, 0) # Prevents health from dropping below 0
+	
+	# --- UPDATE HEALTH BAR ON DAMAGE ---
+	if health_bar:
+		health_bar.value = health
+	# -----------------------------------
+	
 	print(name, " took damage! Health is now: ", health)
 	
 	if health <= 0:
@@ -157,6 +171,8 @@ func take_damage(amount: int) -> void:
 		set_physics_process(false) 
 		$CollisionShape2D.set_deferred("disabled", true)
 		$Pivot/Hitbox/CollisionShape2D.set_deferred("disabled", true)
+		if health_bar:
+			health_bar.visible = false # Hide bar on death
 		anim.play("Death")
 		await anim.animation_finished
 		queue_free()
