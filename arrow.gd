@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	# Deal damage if it hits an enemy
 	if body.is_in_group("enemy") and body.has_method("take_damage"):
-		body.take_damage(DAMAGE)
+		body.take_damage(DAMAGE, "arrow")
 		
 	# Destroy the arrow when it hits an enemy or a wall
 	queue_free()

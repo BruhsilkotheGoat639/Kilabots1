@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c1rna5mimd5uh" path="res://archer_enemy.gd" id="1_lhhw4"]
 [ext_resource type="PackedScene" uid="uid://htnakrenf8t6" path="res://enemy_arrow.tscn" id="2_7gok4"]
 [ext_resource type="Texture2D" uid="uid://c2230hytenq56" path="res://Sprites/archer enemy/Archer_attac.png" id="3_yxl5v"]
+[ext_resource type="AudioStream" uid="uid://dk183ftkgr4aa" path="res://Sounds/EnemyHit_Sword.wav" id="4_0wclx"]
+[ext_resource type="AudioStream" uid="uid://40sh1yxgckic" path="res://Sounds/EnemyHit_Range.wav" id="5_w1sy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53x37"]
 size = Vector2(39, 47)
@@ -45,7 +47,10 @@ animations = [{
 "name": &"Attack",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wclx")
+}],
 "loop": 1,
 "name": &"Idle",
 "speed": 5.0
@@ -70,9 +75,17 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_jgew0")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=2001293753]
-scale = Vector2(0.1, 0.1)
+position = Vector2(-4, -1)
+scale = Vector2(0.16064453, 0.2265625)
 sprite_frames = SubResource("SpriteFrames_pyim0")
 animation = &"Idle"
+frame_progress = 0.89368695
+
+[node name="HitSoundMelee" type="AudioStreamPlayer2D" parent="." unique_id=1228780616]
+stream = ExtResource("4_0wclx")
+
+[node name="HitSoundArrow" type="AudioStreamPlayer2D" parent="." unique_id=2117057793]
+stream = ExtResource("5_w1sy1")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

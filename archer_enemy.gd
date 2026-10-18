@@ -22,6 +22,8 @@ var current_target: Node2D = null
 @onready var anim = $Animation 
 @onready var muzzle = $Muzzle
 @onready var detection_area = $DetectionArea
+@onready var hit_sound_melee: AudioStreamPlayer2D = $HitSoundMelee
+@onready var hit_sound_arrow: AudioStreamPlayer2D = $HitSoundArrow
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -99,11 +101,17 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 				break
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
 	print("Archer took ", amount, " damage! Health: ", health)
 	
 	flash_red()
+	
+	match hit_type:
+		"melee":
+			hit_sound_melee.play()
+		"arrow":
+			hit_sound_arrow.play()
 	
 	if health <= 0:
 		queue_free()

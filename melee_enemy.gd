@@ -14,6 +14,8 @@ const STAGGER_COOLDOWN = 2.5
 
 @onready var ledge_check: RayCast2D = $LedgeCheck
 @onready var sprite: AnimatedSprite2D = $MummyAnimation 
+@onready var hit_sound_melee: AudioStreamPlayer2D = $HitSoundMelee
+@onready var hit_sound_arrow: AudioStreamPlayer2D = $HitSoundArrow
 
 var gravity = 1000.0
 var health = 100.0	
@@ -148,22 +150,29 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			body.take_damage(DAMAGE)
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
 	print("Enemy took ", amount, " damage! Health is now: ", health)
-	
+
+	# Play the sound based on the type of attack
+	match hit_type:
+		"melee":
+			hit_sound_melee.play()
+		"arrow":
+			hit_sound_arrow.play()
+
 	flash_red()
-	
+
 	if health <= 0:
 		print("Enemy defeated!")
-		set_physics_process(false) 
+		set_physics_process(false)
 		$CollisionShape2D.set_deferred("disabled", true)
 		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 		sprite.play("Death")
 		await sprite.animation_finished
 		queue_free()
 		return
-		
+
 	if can_be_staggered:
 		apply_stagger()
 

@@ -142,7 +142,7 @@ func perform_attack() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):
-			body.take_damage(damage_amount)
+			body.take_damage(damage_amount, "melee")
 			print("Hit enemy for ", damage_amount, " damage!")
 
 

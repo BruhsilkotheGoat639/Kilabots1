@@ -7,7 +7,7 @@
 size = Vector2(31, 10)
 
 [node name="Arrow" type="Area2D" unique_id=413101658]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 5
 script = ExtResource("1_l5ahi")
 
