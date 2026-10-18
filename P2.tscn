@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://cnua62ax3lps5"]
+
+[ext_resource type="Script" uid="uid://bg3tmaj2o1ahp" path="res://p2state.gd" id="1_26en3"]
+[ext_resource type="PackedScene" uid="uid://28rvbgjsrrcn" path="res://arrow.tscn" id="2_g7xqj"]
+[ext_resource type="Texture2D" uid="uid://f8im6bycu7mq" path="res://Sprites/WomanSprite/Idle/JUMP FALL GIRL.png" id="3_bfnt5"]
+[ext_resource type="Texture2D" uid="uid://ojpsmmwuobbq" path="res://Sprites/WomanSprite/Falling/JUMP FALL GIRL (1).png" id="3_jd2cr"]
+[ext_resource type="Texture2D" uid="uid://duen23hsxcgmj" path="res://Sprites/WomanSprite/Walking/Walking giel.png" id="3_oijwg"]
+[ext_resource type="Texture2D" uid="uid://drp2qad22e2ur" path="res://Sprites/WomanSprite/image.png" id="3_t6abp"]
+[ext_resource type="Texture2D" uid="uid://cabg1svpc3d5a" path="res://Sprites/WomanSprite/Death/DYING GIRL.png" id="4_as3dp"]
+[ext_resource type="Texture2D" uid="uid://cgwji68ml8kos" path="res://Sprites/WomanSprite/Walking/Walking girl.png" id="4_bfnt5"]
+[ext_resource type="Texture2D" uid="uid://bo3jlfur0v67v" path="res://Sprites/WomanSprite/Falling/JUMP FALL GIRL (2).png" id="4_gjq7a"]
+[ext_resource type="Texture2D" uid="uid://cy387tvlrf3qf" path="res://Sprites/WomanSprite/Death/DYING GIRL (1).png" id="5_h0tt0"]
+[ext_resource type="Texture2D" uid="uid://u1eign1h2u3b" path="res://Sprites/WomanSprite/Falling/JUMP FALL GIRL (3).png" id="5_wmjts"]
+[ext_resource type="Texture2D" uid="uid://cplb1sw8523f3" path="res://Sprites/WomanSprite/Death/DYING GIRL (2).png" id="6_8s6ve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wxcr"]
+size = Vector2(30, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s6ve"]
+atlas = ExtResource("3_t6abp")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udlk8"]
+atlas = ExtResource("4_as3dp")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osab3"]
+atlas = ExtResource("5_h0tt0")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwo7k"]
+atlas = ExtResource("6_8s6ve")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waohy"]
+atlas = ExtResource("3_jd2cr")
+region = Rect2(0, 0, 337, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6abp"]
+atlas = ExtResource("4_gjq7a")
+region = Rect2(0, 0, 311, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as3dp"]
+atlas = ExtResource("5_wmjts")
+region = Rect2(0, 0, 370, 481)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xb25"]
+atlas = ExtResource("3_bfnt5")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0tt0"]
+atlas = ExtResource("3_jd2cr")
+region = Rect2(0, 0, 337, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq4qs"]
+atlas = ExtResource("4_bfnt5")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd2cr"]
+atlas = ExtResource("3_oijwg")
+region = Rect2(0, 0, 370, 505)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7xqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s6ve")
+}],
+"loop": 1,
+"name": &"Aiming_Shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udlk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osab3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwo7k")
+}],
+"loop": 0,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waohy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6abp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as3dp")
+}],
+"loop": 0,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xb25")
+}],
+"loop": 0,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0tt0")
+}],
+"loop": 0,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq4qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd2cr")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="P2" type="CharacterBody2D" unique_id=281511241]
+script = ExtResource("1_26en3")
+arrow_scene = ExtResource("2_g7xqj")
+
+[node name="Pivot" type="Marker2D" parent="." unique_id=1720925823]
+
+[node name="Muzzle" type="Marker2D" parent="Pivot" unique_id=1433531214]
+position = Vector2(19, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1424963465]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_4wxcr")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=478189676 groups=["player"]]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_g7xqj")
+animation = &"Death"

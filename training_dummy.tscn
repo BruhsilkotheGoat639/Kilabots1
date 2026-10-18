@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ufs8opl0778n"]
+
+[ext_resource type="Script" uid="uid://7dyp4vjsm08w" path="res://training_dummy.gd" id="1_c2g3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqwpo"]
+size = Vector2(38, 41)
+
+[node name="TrainingDummy" type="CharacterBody2D" unique_id=1702480810 groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_c2g3c")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=702964423]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.15686275, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=375620388]
+position = Vector2(20, 19.5)
+shape = SubResource("RectangleShape2D_qqwpo")

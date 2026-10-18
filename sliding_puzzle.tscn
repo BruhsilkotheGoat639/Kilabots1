@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d4mtqt24w5nau"]
+
+[ext_resource type="Script" uid="uid://wcukcf6lecqf" path="res://sliding_puzzle.gd" id="1_wm8w8"]
+
+[node name="SlidingPuzzle" type="Control" unique_id=146248435]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wm8w8")

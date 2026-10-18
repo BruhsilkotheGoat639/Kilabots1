@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://51fwvlfawnnc"]
+
+[ext_resource type="Script" uid="uid://cn3f6m3nu14cm" path="res://level1.gd" id="1_8m85o"]
+[ext_resource type="PackedScene" uid="uid://b2p4ak584gigo" path="res://P1.tscn" id="1_ibub6"]
+[ext_resource type="PackedScene" uid="uid://cnua62ax3lps5" path="res://P2.tscn" id="2_h1g3r"]
+[ext_resource type="Script" uid="uid://c42yt4hpoga0c" path="res://dynamiccamera.gd" id="4_7ay8b"]
+[ext_resource type="PackedScene" uid="uid://ufs8opl0778n" path="res://training_dummy.tscn" id="5_7ay8b"]
+[ext_resource type="PackedScene" uid="uid://bn2rog1n5q3t" path="res://Enemies/melee_enemy.tscn" id="6_gg0et"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgam6"]
+size = Vector2(1164, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2oayb"]
+size = Vector2(270, 12)
+
+[node name="Node2D" type="Node2D" unique_id=1470315685]
+script = ExtResource("1_8m85o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1074270769]
+position = Vector2(0, 608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1296477178]
+position = Vector2(572, 15.5)
+shape = SubResource("RectangleShape2D_vgam6")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1921304662]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1155.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21568628, 0.30588236, 0.07058824, 1)
+
+[node name="P1" parent="." unique_id=281511241 groups=["player"] instance=ExtResource("1_ibub6")]
+position = Vector2(402, 539)
+collision_layer = 8
+collision_mask = 3
+
+[node name="P2" parent="." unique_id=717904425 groups=["player"] instance=ExtResource("2_h1g3r")]
+position = Vector2(243, 554)
+collision_layer = 8
+collision_mask = 3
+
+[node name="DynamicCamera" type="Camera2D" parent="." unique_id=6218240]
+script = ExtResource("4_7ay8b")
+
+[node name="TrainingDummy" parent="." unique_id=1702480810 instance=ExtResource("5_7ay8b")]
+position = Vector2(677, 547)
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=1814526023]
+position = Vector2(82, 522)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=1357407912]
+position = Vector2(125, -4)
+shape = SubResource("RectangleShape2D_2oayb")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Platform/CollisionShape2D" unique_id=1769488041]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -6.0
+offset_right = 135.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeleeEnemy" parent="." unique_id=164289940 instance=ExtResource("6_gg0et")]
+position = Vector2(946, 565)

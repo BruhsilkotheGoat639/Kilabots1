@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://c4yxut8eknhek"]
+
+[ext_resource type="Script" uid="uid://vk23svghic0l" path="res://boss_anomaly.gd" id="1_cd0xb"]
+[ext_resource type="PackedScene" uid="uid://cx48ccecx0cr7" path="res://chrono_sphere.tscn" id="2_5atmv"]
+[ext_resource type="Texture2D" uid="uid://orhyav0st5t6" path="res://icon.svg" id="2_wqqhl"]
+[ext_resource type="PackedScene" uid="uid://htnakrenf8t6" path="res://enemy_arrow.tscn" id="3_w5ail"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt2yp"]
+atlas = ExtResource("2_wqqhl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5atmv"]
+atlas = ExtResource("2_wqqhl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5ail"]
+atlas = ExtResource("2_wqqhl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34fmm"]
+atlas = ExtResource("2_wqqhl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqqhl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt2yp")
+}],
+"loop": 0,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5atmv")
+}],
+"loop": 0,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ail")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34fmm")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2yp"]
+size = Vector2(64, 102)
+
+[node name="BossAnomaly" type="CharacterBody2D" unique_id=820423617 groups=["boss", "enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_cd0xb")
+chronosphere_scene = ExtResource("2_5atmv")
+boss_projectile_scene = ExtResource("3_w5ail")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1898181095]
+position = Vector2(0.5, 1.9999971)
+scale = Vector2(0.4765625, 0.765625)
+sprite_frames = SubResource("SpriteFrames_wqqhl")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1498011265]
+shape = SubResource("RectangleShape2D_mt2yp")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=852967598]
+process_mode = 3

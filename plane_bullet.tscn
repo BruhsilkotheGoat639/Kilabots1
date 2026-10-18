@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ntohesv8epau"]
+
+[ext_resource type="Script" uid="uid://de76nywqmayhf" path="res://plane_bullet.gd" id="1_o5g24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw6nl"]
+size = Vector2(10, 4)
+
+[node name="PlaneBullet" type="Area2D" unique_id=2100523503]
+collision_mask = 5
+script = ExtResource("1_o5g24")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1034698591]
+offset_right = 10.0
+offset_bottom = 4.0
+color = Color(0.8924983, 0.3489777, 0.14190796, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793283406]
+position = Vector2(5, 2)
+shape = SubResource("RectangleShape2D_sw6nl")
+
+[node name="Timer" type="Timer" parent="." unique_id=1944584233]
+wait_time = 1.5
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

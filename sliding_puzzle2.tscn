@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c7vgbxgkjgsy5"]
+
+[ext_resource type="Script" uid="uid://uap5504fj50v" path="res://sliding_puzzle2.gd" id="1_tkbef"]
+[ext_resource type="Texture2D" uid="uid://orhyav0st5t6" path="res://icon.svg" id="2_cjwrc"]
+
+[node name="SlidingPuzzle" type="Node2D" unique_id=1253685286]
+script = ExtResource("1_tkbef")
+puzzle_image = ExtResource("2_cjwrc")

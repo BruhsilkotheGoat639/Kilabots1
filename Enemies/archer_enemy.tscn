@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://c80mwaatosae1"]
+
+[ext_resource type="Script" uid="uid://c1rna5mimd5uh" path="res://archer_enemy.gd" id="1_lhhw4"]
+[ext_resource type="PackedScene" uid="uid://htnakrenf8t6" path="res://enemy_arrow.tscn" id="2_7gok4"]
+[ext_resource type="Texture2D" uid="uid://dogx24h21gny4" path="res://Sprites/archer enemy/archer attack.png" id="3_yxl5v"]
+[ext_resource type="Texture2D" uid="uid://dak61dd7s4a4i" path="res://Sprites/archer enemy/archer idle.png" id="4_0wclx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53x37"]
+size = Vector2(39, 47)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgew0"]
+radius = 249.72385
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1sy1"]
+atlas = ExtResource("3_yxl5v")
+region = Rect2(0, 154, 426, 366)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uorar"]
+atlas = ExtResource("3_yxl5v")
+region = Rect2(431, 154, 431, 365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afs7t"]
+atlas = ExtResource("3_yxl5v")
+region = Rect2(855, 154, 425, 365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ri8v"]
+atlas = ExtResource("3_yxl5v")
+region = Rect2(1331, 154, 442, 365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0r6h"]
+atlas = ExtResource("4_0wclx")
+region = Rect2(0, 0, 543, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vresu"]
+atlas = ExtResource("4_0wclx")
+region = Rect2(543, 0, 543, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4dli"]
+atlas = ExtResource("4_0wclx")
+region = Rect2(1086, 0, 543, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aulf"]
+atlas = ExtResource("4_0wclx")
+region = Rect2(1629, 0, 543, 724)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyim0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1sy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uorar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afs7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ri8v")
+}],
+"loop": 0,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0r6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vresu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4dli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aulf")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="ArcherEnemy" type="CharacterBody2D" unique_id=1713821377 groups=["enemy"]]
+collision_mask = 3
+script = ExtResource("1_lhhw4")
+enemy_arrow_scene = ExtResource("2_7gok4")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=2044992052]
+position = Vector2(21, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=308617589]
+shape = SubResource("RectangleShape2D_53x37")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=548073853]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=615490770]
+shape = SubResource("CircleShape2D_jgew0")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=2001293753]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_pyim0")
+animation = &"Attack"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

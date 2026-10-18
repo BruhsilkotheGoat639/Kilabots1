@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://75cp21pfuyc2"]
+
+[ext_resource type="Script" uid="uid://cg148pdifwc13" path="res://enemy_plane.gd" id="1_bj0im"]
+[ext_resource type="PackedScene" uid="uid://cit1s1l3vmkq" path="res://enemy_plane_bullet.tscn" id="2_b8yku"]
+[ext_resource type="Texture2D" uid="uid://dxegbxdma1ab6" path="res://Sprites/Fire Spirit Attack.png" id="3_wshm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8yku"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqhij"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd6x5"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_selm5"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ev33"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k6do"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af3dt"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceaws"]
+atlas = ExtResource("3_wshm1")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af3dt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8yku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqhij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd6x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_selm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ev33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k6do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af3dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceaws")
+}],
+"loop": 1,
+"name": &"Enemy_plane",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceaws"]
+size = Vector2(49, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rsg2"]
+size = Vector2(58, 57)
+
+[node name="EnemyPlane" type="CharacterBody2D" unique_id=1242405123 groups=["enemy"]]
+collision_mask = 0
+script = ExtResource("1_bj0im")
+enemy_bullet = ExtResource("2_b8yku")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=207765033]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_af3dt")
+animation = &"Enemy_plane"
+frame_progress = 0.8111445
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=649589592]
+shape = SubResource("RectangleShape2D_ceaws")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1532842602]
+position = Vector2(24, 0)
+rotation = 1.5707964
+
+[node name="KamikazeHitbox" type="Area2D" parent="." unique_id=919814647]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KamikazeHitbox" unique_id=535218368]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5rsg2")
+
+[connection signal="body_entered" from="KamikazeHitbox" to="." method="_on_kamikaze_hitbox_body_entered"]

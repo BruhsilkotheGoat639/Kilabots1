@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cx48ccecx0cr7"]
+
+[ext_resource type="Script" uid="uid://qdxoe6jbfsq7" path="res://chrono_sphere.gd" id="1_l8rn4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgew0"]
+radius = 90.0
+
+[node name="ChronoSphere" type="Area2D" unique_id=959280642]
+script = ExtResource("1_l8rn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029970074]
+shape = SubResource("CircleShape2D_jgew0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=747732371]
+offset_left = -75.0
+offset_top = -89.0
+offset_right = 76.0
+offset_bottom = 94.0

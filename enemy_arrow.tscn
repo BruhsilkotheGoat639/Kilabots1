@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://htnakrenf8t6"]
+
+[ext_resource type="Script" uid="uid://bmu7karoi77j8" path="res://enemy_arrow.gd" id="1_q7c3p"]
+[ext_resource type="Texture2D" uid="uid://d4jxv0a5oeqdy" path="res://Sprites/archer enemy/Enemy_arrows-removebg-preview.png" id="2_pudrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ndhl"]
+size = Vector2(31, 10)
+
+[node name="Enemyarrow" type="Area2D" unique_id=413101658]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("1_q7c3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318237306]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_2ndhl")
+
+[node name="Arrowsprite" type="Sprite2D" parent="." unique_id=429530683]
+position = Vector2(10.000004, -5.684342e-14)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_pudrs")
+hframes = 5
+frame = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://deqrnc85ypwhs"]
+
+[ext_resource type="Script" uid="uid://rxmh0or48hn1" path="res://2_nd_act.gd" id="1_e7wt0"]
+[ext_resource type="PackedScene" uid="uid://d2clx1c36nex4" path="res://plane.tscn" id="1_i1u0f"]
+[ext_resource type="Script" uid="uid://h24qk1pwc66o" path="res://procedural_clouds.gd" id="1_w17ux"]
+[ext_resource type="Script" uid="uid://d2rtojwxk3tbw" path="res://hacking.gd" id="2_1bc03"]
+[ext_resource type="PackedScene" uid="uid://75cp21pfuyc2" path="res://enemy_plane.tscn" id="2_aqusp"]
+
+[sub_resource type="Gradient" id="Gradient_jgew0"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2i286"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jgew0"]
+noise = SubResource("FastNoiseLite_2i286")
+color_ramp = SubResource("Gradient_jgew0")
+seamless = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1u0f"]
+size = Vector2(12.5, 764)
+
+[sub_resource type="Animation" id="Animation_e7wt0"]
+resource_name = "Fade in"
+
+[sub_resource type="Animation" id="Animation_aqusp"]
+resource_name = "Fade out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fading/Fadeing:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t8f8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fading/Fadeing:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06jfm"]
+_data = {
+&"Fade in": SubResource("Animation_e7wt0"),
+&"Fade out": SubResource("Animation_aqusp"),
+&"RESET": SubResource("Animation_t8f8x")
+}
+
+[node name="2ndAct" type="Node2D" unique_id=1452407561]
+script = ExtResource("1_e7wt0")
+enemy_plane_scene = ExtResource("2_aqusp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1295057183]
+offset_left = 530.0
+offset_right = 1280.0
+offset_bottom = 750.0
+color = Color(9.433627e-06, 0.71203154, 0.91607153, 1)
+
+[node name="ProceduralClouds" type="Sprite2D" parent="." unique_id=228413979]
+position = Vector2(904, 372.5)
+rotation = 1.5707964
+scale = Vector2(1.4765625, 1.4628906)
+texture = SubResource("NoiseTexture2D_jgew0")
+script = ExtResource("1_w17ux")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=117822993]
+offset_left = 522.0
+offset_top = 2.0
+offset_right = 541.0
+offset_bottom = 752.0
+color = Color(0, 0, 0, 1)
+
+[node name="boundaries" type="StaticBody2D" parent="." unique_id=1331327392]
+collision_mask = 0
+
+[node name="Boundary0" type="CollisionShape2D" parent="boundaries" unique_id=1065603343]
+position = Vector2(537.25, 374)
+shape = SubResource("RectangleShape2D_i1u0f")
+debug_color = Color(0.77788496, 0.035098, 0.44896144, 0.41960785)
+
+[node name="Boundary1" type="CollisionShape2D" parent="boundaries" unique_id=546453134]
+position = Vector2(1278, 379)
+shape = SubResource("RectangleShape2D_i1u0f")
+debug_color = Color(0.77788496, 0.035098, 0.44896144, 0.41960785)
+
+[node name="Boundary2" type="CollisionShape2D" parent="boundaries" unique_id=2087202077]
+position = Vector2(907, -0.9999695)
+rotation = 1.5707964
+scale = Vector2(0.8400012, 1)
+shape = SubResource("RectangleShape2D_i1u0f")
+debug_color = Color(0.77788496, 0.035098, 0.44896144, 0.41960785)
+
+[node name="Boundary3" type="CollisionShape2D" parent="boundaries" unique_id=2004795778]
+position = Vector2(901, 750)
+rotation = 1.5707964
+scale = Vector2(0.8400012, 1)
+shape = SubResource("RectangleShape2D_i1u0f")
+debug_color = Color(0.77788496, 0.035098, 0.44896144, 0.41960785)
+
+[node name="Hacking" type="Control" parent="." unique_id=761079426]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 531.0
+offset_bottom = 743.0
+script = ExtResource("2_1bc03")
+
+[node name="Input" type="TextEdit" parent="Hacking" unique_id=1442666885]
+layout_mode = 0
+offset_right = 522.0
+offset_bottom = 100.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Hacking" unique_id=808898720]
+layout_mode = 0
+offset_top = 102.0
+offset_right = 522.0
+offset_bottom = 748.0
+
+[node name="Text" type="TextEdit" parent="Hacking" unique_id=748585371]
+layout_mode = 0
+offset_top = 101.0
+offset_right = 521.0
+offset_bottom = 750.0
+focus_mode = 0
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1119810476]
+
+[node name="Plane" parent="." unique_id=436766004 groups=["player_plane"] instance=ExtResource("1_i1u0f")]
+position = Vector2(852, 263)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1184796232]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=542449019]
+offset_left = 800.0
+offset_top = 9.0
+offset_right = 1017.0
+offset_bottom = 53.0
+
+[node name="HPLabel" type="Label" parent="CanvasLayer" unique_id=309794930]
+offset_left = 84.0
+offset_top = 685.0
+offset_right = 436.0
+offset_bottom = 748.0
+theme_override_colors/font_color = Color(0.7883869, 0, 0.038276557, 1)
+
+[node name="Enemy Spawnpoint" type="Node" parent="." unique_id=552701985]
+
+[node name="EnemySpawnpoint0" type="Marker2D" parent="Enemy Spawnpoint" unique_id=1010821225 groups=["enemy_spawns"]]
+position = Vector2(548, -12)
+
+[node name="EnemySpawnpoint1" type="Marker2D" parent="Enemy Spawnpoint" unique_id=1149823322 groups=["enemy_spawns"]]
+position = Vector2(599, 771)
+
+[node name="EnemySpawnpoint2" type="Marker2D" parent="Enemy Spawnpoint" unique_id=590457333 groups=["enemy_spawns"]]
+position = Vector2(512, 261)
+
+[node name="EnemySpawnpoint3" type="Marker2D" parent="Enemy Spawnpoint" unique_id=1822777668 groups=["enemy_spawns"]]
+position = Vector2(1232, 769)
+
+[node name="EnemySpawnpoint4" type="Marker2D" parent="Enemy Spawnpoint" unique_id=2103819684 groups=["enemy_spawns"]]
+position = Vector2(1276, 532)
+
+[node name="EnemySpawnpoint5" type="Marker2D" parent="Enemy Spawnpoint" unique_id=652418366 groups=["enemy_spawns"]]
+position = Vector2(1286, 132)
+
+[node name="EnemySpawnpoint6" type="Marker2D" parent="Enemy Spawnpoint" unique_id=1012660483 groups=["enemy_spawns"]]
+position = Vector2(1145, 12)
+
+[node name="Fading" type="AnimationPlayer" parent="." unique_id=1916027415]
+libraries/ = SubResource("AnimationLibrary_06jfm")
+
+[node name="Fadeing" type="ColorRect" parent="Fading" unique_id=1136865021]
+offset_right = 1316.0
+offset_bottom = 787.0
+color = Color(0, 0, 0, 1)

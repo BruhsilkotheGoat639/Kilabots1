@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://d2clx1c36nex4"]
+
+[ext_resource type="Script" uid="uid://c72v00hhx3qje" path="res://plane.gd" id="1_s46f0"]
+[ext_resource type="PackedScene" uid="uid://ntohesv8epau" path="res://plane_bullet.tscn" id="2_dpar4"]
+[ext_resource type="Texture2D" uid="uid://c6fkcbw4xt7lx" path="res://Sprites/helicopter moving.png" id="3_nqs3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpar4"]
+size = Vector2(45, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xwvw"]
+atlas = ExtResource("3_nqs3l")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28khi"]
+atlas = ExtResource("3_nqs3l")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1mur"]
+atlas = ExtResource("3_nqs3l")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cejrt"]
+atlas = ExtResource("3_nqs3l")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afyqo"]
+atlas = ExtResource("3_nqs3l")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwo5b"]
+atlas = ExtResource("3_nqs3l")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye4pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xwvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28khi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1mur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cejrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afyqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwo5b")
+}],
+"loop": 1,
+"name": &"Flying",
+"speed": 5.0
+}]
+
+[node name="Plane" type="CharacterBody2D" unique_id=436766004]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_s46f0")
+bullet_scene = ExtResource("2_dpar4")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=525004434]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=246632514]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_dpar4")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1203990807]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_ye4pl")
+animation = &"Flying"

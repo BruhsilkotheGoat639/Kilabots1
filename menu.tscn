@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bm8da74orhvli"]
+
+[ext_resource type="Script" uid="uid://tbiv3hrpkuba" path="res://menu.gd" id="1_lti8b"]
+
+[node name="Menu" type="Control" unique_id=1693318290]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=308659877]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 382.0
+offset_right = 1008.0
+offset_bottom = 487.0
+
+[node name="Start" type="Button" parent="HBoxContainer" unique_id=545838718]
+layout_mode = 2
+text = "Start
+"
+
+[node name="Label" type="Label" parent="." unique_id=678656888]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 16.0
+offset_right = 1024.0
+offset_bottom = 39.0
+text = "Player 1 Controls:
+WASD = Movement
+G = Attack
+
+Player 2 Controls:
+UP, Down,
+Left, RIght Arrows = Movement
+Numpad 0 = Aim
+Numpad 2 = Shoot
+Left Click = Plane shoot"
+
+[connection signal="pressed" from="HBoxContainer/Start" to="." method="_on_start_pressed"]
