@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dad3fpctmop4w" path="res://pixilart-sprite.png" id="4_wmjts"]
 [ext_resource type="Texture2D" uid="uid://dquf5f40llylj" path="res://JUMPING GIRL.png" id="5_0xb25"]
 [ext_resource type="Texture2D" uid="uid://k2rjekbxb1qe" path="res://WALKING GIRL (3).png" id="6_cq4qs"]
+[ext_resource type="Texture2D" uid="uid://j0o83e3tkcq7" path="res://P2 empty.png" id="7_cq4qs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wxcr"]
 size = Vector2(30, 43)
@@ -155,6 +156,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6yyw"]
+bg_color = Color(0.16965613, 0.09002309, 0.015108844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8741j"]
+bg_color = Color(0.3500176, 0.62400657, 0.8649455, 1)
+
 [node name="P2" type="CharacterBody2D" unique_id=281511241]
 script = ExtResource("1_26en3")
 arrow_scene = ExtResource("2_g7xqj")
@@ -173,3 +180,32 @@ position = Vector2(0, 5.0000005)
 scale = Vector2(0.115468755, 0.17739584)
 sprite_frames = SubResource("SpriteFrames_g7xqj")
 animation = &"Walk"
+
+[node name="Healthbar" type="Control" parent="." unique_id=1878779190]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -76.0
+offset_top = -39.0
+offset_right = -36.0
+offset_bottom = 1.0
+
+[node name="frame" type="TextureRect" parent="Healthbar" unique_id=1043075714]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 15.0
+offset_right = 95.0
+offset_bottom = 24.0
+texture = ExtResource("7_cq4qs")
+expand_mode = 1
+
+[node name="bar" type="ProgressBar" parent="Healthbar" unique_id=1238989582]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 18.0
+offset_right = 94.0
+offset_bottom = 21.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b6yyw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8741j")
+value = 100.0
+exp_edit = true
+show_percentage = false

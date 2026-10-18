@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dtb66dmy8b01" path="res://JUMP MAN.png" id="3_g0auq"]
 [ext_resource type="Texture2D" uid="uid://derjdrhiyo5xn" path="res://PAYAT NA DRE.png" id="3_kl4ev"]
 [ext_resource type="Texture2D" uid="uid://bvnqg6tlupven" path="res://WALKING MAN.png" id="4_kl4ev"]
+[ext_resource type="Texture2D" uid="uid://bsruie6ke1shy" path="res://health-bar-empty 1.png" id="6_kl4ev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wxcr"]
 size = Vector2(31, 48)
@@ -233,6 +234,12 @@ _data = {
 &"RESET": SubResource("Animation_d2510")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8741j"]
+bg_color = Color(0.14486498, 0.04236421, 0.0037530374, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52pxy"]
+bg_color = Color(0.32749, 0.69996905, 0.24384359, 1)
+
 [node name="P1" type="CharacterBody2D" unique_id=281511241]
 script = ExtResource("1_0b1hi")
 
@@ -257,5 +264,34 @@ animation = &"Jump"
 
 [node name="AttackAnimation" type="AnimationPlayer" parent="." unique_id=1895636156]
 libraries/ = SubResource("AnimationLibrary_tq3na")
+
+[node name="Healthbar_p1" type="Control" parent="." unique_id=454105910]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -15.0
+offset_top = -26.0
+offset_right = 25.0
+offset_bottom = -18.0
+
+[node name="Frame_p1" type="TextureRect" parent="Healthbar_p1" unique_id=527168767]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 46.0
+offset_bottom = 6.0
+texture = ExtResource("6_kl4ev")
+expand_mode = 1
+
+[node name="healthbar_p1" type="ProgressBar" parent="Healthbar_p1" unique_id=895009439]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8741j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_52pxy")
+max_value = 150.0
+value = 150.0
+show_percentage = false
 
 [connection signal="area_entered" from="Pivot/Hitbox" to="." method="_on_hitbox_area_entered"]

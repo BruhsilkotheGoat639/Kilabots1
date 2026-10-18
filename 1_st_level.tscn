@@ -1773,10 +1773,10 @@ libraries/ = SubResource("AnimationLibrary_jmgb7")
 
 [node name="Fadeing" type="ColorRect" parent="DynamicCamera" unique_id=84629139]
 z_index = 3
-offset_left = -2427.0
-offset_top = -1343.0
-offset_right = 4103.0
-offset_bottom = 1210.0
+offset_left = -2019.0
+offset_top = -1128.0
+offset_right = 4511.0
+offset_bottom = 1425.0
 color = Color(0, 0, 0, 0)
 
 [node name="HordeDetection" type="Area2D" parent="." unique_id=1593201653]
