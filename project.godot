@@ -23,6 +23,8 @@ buses/default_bus_layout="uid://cip3ff3fgdex0"
 
 PauseMenu="*uid://dur78crsgke0w"
 SettingsPanel="*uid://ddsxxvyfo2ij1"
+DamageIndicator="*uid://07j0ylw1j3h0"
+GameOver="*uid://bm4i67ex2ourg"
 
 [display]
 

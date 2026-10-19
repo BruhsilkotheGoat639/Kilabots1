@@ -38,10 +38,10 @@ size_flags_vertical = 10
 text = "Back"
 
 [node name="FullScreen" type="Label" parent="." unique_id=503799484]
-offset_left = 283.0
-offset_top = 335.0
-offset_right = 1107.0
-offset_bottom = 358.0
+offset_left = 294.0
+offset_top = 486.0
+offset_right = 1118.0
+offset_bottom = 509.0
 text = "FullScreen"
 
 [node name="FullScreenToggle" type="CheckButton" parent="FullScreen" unique_id=1514253402]
@@ -50,6 +50,30 @@ offset_left = 102.0
 offset_top = 3.0
 offset_right = 146.0
 offset_bottom = 27.0
+
+[node name="SFXSlider" type="Label" parent="." unique_id=1905931538]
+offset_left = 289.0
+offset_top = 330.0
+offset_right = 1113.0
+offset_bottom = 353.0
+text = "Sound Effect"
+
+[node name="SFXVolumeLabel" type="Label" parent="SFXSlider" unique_id=1082121469]
+layout_mode = 0
+offset_left = 488.0
+offset_top = -1.0
+offset_right = 705.0
+offset_bottom = 22.0
+
+[node name="SFXSliderButton" type="HSlider" parent="SFXSlider" unique_id=1983316429]
+layout_mode = 0
+offset_left = 118.0
+offset_top = -20.0
+offset_right = 469.0
+offset_bottom = 44.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [connection signal="pressed" from="SettingsPanel/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="FullScreen/FullScreenToggle" to="." method="_on_full_screen_toggle_toggled"]

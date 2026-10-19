@@ -17,7 +17,8 @@ const DOUBLE_TAP_WINDOW := 0.25
 var last_down_time := 0.0
 const PLATFORM_LAYER := 2 
 
-var max_health := 150
+var lifesteal := 2
+var max_health := 100.0
 var health := 150
 var active_state := STATE.IDLE
 var facing_direction := 1.0 
@@ -28,7 +29,8 @@ var damage_amount = 30
 @onready var hitbox: Area2D = $Pivot/Hitbox
 @onready var anim: AnimatedSprite2D = $Animation
 @onready var attack_anim_player: AnimationPlayer = $AttackAnimation
-@onready var health_bar: ProgressBar = $Healthbar_p1/healthbar_p1  # Matches your scene tree path
+@onready var health_bar: ProgressBar = $Healthbar_p1/healthbar_p1
+@onready var hurt_sound =  $HurtSound # Matches your scene tree path
 
 func _ready() -> void:
 	hitbox_shape.disabled = true
@@ -132,7 +134,7 @@ func perform_attack() -> void:
 	anim.stop()
 	
 	# --- LIFESTEAL & HEALTH BAR UPDATE ---
-	health = min(health + 5, max_health) # Increases health by 5 without exceeding max health (150)
+	health = min(health + lifesteal, max_health) # Increases health by 5 without exceeding max health (150)
 	if health_bar:
 		health_bar.value = health
 	print("Player Lifesteal 5 hp! Health is now: ", health)
@@ -156,6 +158,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	hurt_sound.play()
+	DamageIndicator.spawn_damage(global_position, amount, true)
 	health = max(health, 0) # Prevents health from dropping below 0
 	
 	# --- UPDATE HEALTH BAR ON DAMAGE ---

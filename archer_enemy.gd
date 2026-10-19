@@ -103,6 +103,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
+	DamageIndicator.spawn_damage(global_position, amount, false)
 	print("Archer took ", amount, " damage! Health: ", health)
 	
 	flash_red()

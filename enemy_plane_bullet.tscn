@@ -9,7 +9,20 @@ size = Vector2(10, 4)
 collision_mask = 7
 script = ExtResource("1_tnr5d")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1034698591]
+[node name="BlackOutline" type="ColorRect" parent="." unique_id=689717384]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.4510789
+offset_top = -1.2788296
+offset_right = 10.935787
+offset_bottom = 4.496359
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 1)
+
+[node name="COlor" type="ColorRect" parent="." unique_id=1034698591]
 offset_right = 10.0
 offset_bottom = 4.0
 color = Color(0.99413556, 0.6280187, 0, 1)

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2230hytenq56" path="res://Sprites/archer enemy/Archer_attac.png" id="3_yxl5v"]
 [ext_resource type="AudioStream" uid="uid://dk183ftkgr4aa" path="res://Sounds/EnemyHit_Sword.wav" id="4_0wclx"]
 [ext_resource type="AudioStream" uid="uid://40sh1yxgckic" path="res://Sounds/EnemyHit_Range.wav" id="5_w1sy1"]
+[ext_resource type="Script" uid="uid://bkv2poocnvavo" path="res://Enemies/HealthBar.gd" id="6_w1sy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53x37"]
 size = Vector2(39, 47)
@@ -56,6 +57,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uorar"]
+bg_color = Color(0.6416959, 0, 0.053477325, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afs7t"]
+bg_color = Color(0, 1, 0, 1)
+
 [node name="ArcherEnemy" type="CharacterBody2D" unique_id=1713821377 groups=["enemy"]]
 collision_mask = 3
 script = ExtResource("1_lhhw4")
@@ -83,9 +90,22 @@ frame_progress = 0.89368695
 
 [node name="HitSoundMelee" type="AudioStreamPlayer2D" parent="." unique_id=1228780616]
 stream = ExtResource("4_0wclx")
+bus = &"Sound Effect"
 
 [node name="HitSoundArrow" type="AudioStreamPlayer2D" parent="." unique_id=2117057793]
 stream = ExtResource("5_w1sy1")
+bus = &"Sound Effect"
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1841777121]
+offset_left = -22.0
+offset_top = -27.0
+offset_right = 24.0
+offset_bottom = -22.0
+theme_override_styles/background = SubResource("StyleBoxFlat_uorar")
+theme_override_styles/fill = SubResource("StyleBoxFlat_afs7t")
+value = 100.0
+show_percentage = false
+script = ExtResource("6_w1sy1")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

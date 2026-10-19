@@ -17,15 +17,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_game_over:
 		return
-
-	var alive_players = get_tree().get_nodes_in_group("player")
-	
-	if alive_players.is_empty():
-		trigger_restart()
-		
-
-func trigger_restart() -> void:
-	is_game_over = true
-	print("All players are dead! Level Restarting")
-	await get_tree().create_timer(2.0).timeout
-	get_tree().reload_current_scene()

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dquf5f40llylj" path="res://JUMPING GIRL.png" id="5_0xb25"]
 [ext_resource type="Texture2D" uid="uid://k2rjekbxb1qe" path="res://WALKING GIRL (3).png" id="6_cq4qs"]
 [ext_resource type="Texture2D" uid="uid://j0o83e3tkcq7" path="res://P2 empty.png" id="7_cq4qs"]
+[ext_resource type="AudioStream" uid="uid://xleh8d7rkwjb" path="res://Sounds/Terraria_Male_Damage_Sound_Effect.wav" id="8_jd2cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wxcr"]
 size = Vector2(30, 43)
@@ -211,3 +212,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8741j")
 value = 100.0
 exp_edit = true
 show_percentage = false
+
+[node name="Hurtsound" type="AudioStreamPlayer2D" parent="." unique_id=2089561260]
+stream = ExtResource("8_jd2cr")
+bus = &"Sound Effect"

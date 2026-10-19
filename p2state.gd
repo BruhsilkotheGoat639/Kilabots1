@@ -10,7 +10,7 @@ enum STATE {
 	DIE,
 }
 
-const WALK_VELOCITY := 90.0
+const WALK_VELOCITY := 105.0
 const JUMP_VELOCITY := -450
 const GRAVITY := 1000.0
 const DOUBLE_TAP_WINDOW := 0.25 
@@ -27,7 +27,8 @@ var health := 100
 @onready var pivot: Marker2D = $Pivot
 @onready var muzzle: Marker2D = $Pivot/Muzzle
 @onready var anim: AnimatedSprite2D = $Animation
-@onready var health_bar: ProgressBar = $Healthbar/bar  # Targets the ProgressBar inside your Healthbar node
+@onready var health_bar: ProgressBar = $Healthbar/bar
+@onready var hurt_sound =  $Hurtsound # Targets the ProgressBar inside your Healthbar node
 
 func _ready() -> void:
 	if health_bar:
@@ -179,6 +180,8 @@ func shoot_arrow() -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	hurt_sound.play()
+	DamageIndicator.spawn_damage(global_position, amount, true)
 	health = max(health, 0) # Keeps health from going below 0
 	
 	# --- UPDATE HEALTH BAR ---

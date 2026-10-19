@@ -478,8 +478,8 @@ _data = {
 script = ExtResource("1_lbipw")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=2109288817]
-position = Vector2(639.00006, 373.5)
-scale = Vector2(4.4583335, 4.138889)
+position = Vector2(570.99994, 613)
+scale = Vector2(11.729166, 13.388888)
 texture = ExtResource("1_beypy")
 
 [node name="Design" type="Node" parent="." unique_id=1894355596]

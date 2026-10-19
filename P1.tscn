@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://derjdrhiyo5xn" path="res://PAYAT NA DRE.png" id="3_kl4ev"]
 [ext_resource type="Texture2D" uid="uid://bvnqg6tlupven" path="res://WALKING MAN.png" id="4_kl4ev"]
 [ext_resource type="Texture2D" uid="uid://bsruie6ke1shy" path="res://health-bar-empty 1.png" id="6_kl4ev"]
+[ext_resource type="AudioStream" uid="uid://xleh8d7rkwjb" path="res://Sounds/Terraria_Male_Damage_Sound_Effect.wav" id="7_5bcm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wxcr"]
 size = Vector2(31, 48)
@@ -295,5 +296,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_52pxy")
 max_value = 150.0
 value = 150.0
 show_percentage = false
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=108201984]
+stream = ExtResource("7_5bcm8")
+bus = &"Sound Effect"
 
 [connection signal="area_entered" from="Pivot/Hitbox" to="." method="_on_hitbox_area_entered"]

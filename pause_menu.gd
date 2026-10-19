@@ -16,6 +16,8 @@ func _ready() -> void:
 		quit_button.pressed.connect(_on_quit_pressed)
 
 func _process(_delta: float) -> void:
+	if SettingsPanel.visible or GameOver.visible:
+			return
 	if Input.is_action_just_pressed("Pause"):
 		# Do not allow the pause menu to trigger in the Main Menu scene
 		var current_scene = get_tree().current_scene

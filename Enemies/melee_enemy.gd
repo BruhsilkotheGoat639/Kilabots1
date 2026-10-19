@@ -16,6 +16,7 @@ const STAGGER_COOLDOWN = 2.5
 @onready var sprite: AnimatedSprite2D = $MummyAnimation 
 @onready var hit_sound_melee: AudioStreamPlayer2D = $HitSoundMelee
 @onready var hit_sound_arrow: AudioStreamPlayer2D = $HitSoundArrow
+@onready var death_sound : AudioStreamPlayer2D = $DeathSound
 
 var gravity = 1000.0
 var health = 100.0	
@@ -57,7 +58,7 @@ func _physics_process(delta: float) -> void:
 				perform_attack()
 			elif target.global_position.y > global_position.y + 50 and abs(target.global_position.x - global_position.x) < 50:
 				drop_through_platform()
-			elif target.is_on_floor() and target.global_position.y < global_position.y - 50 and abs(target.global_position.x - global_position.x) < 50:
+			elif target.has_method("is_on_floor") and target.is_on_floor() and target.global_position.y < global_position.y - 50 and abs(target.global_position.x - global_position.x) < 50:
 				execute_delayed_jump()
 			else:
 				var is_at_edge = not ledge_check.is_colliding()
@@ -129,17 +130,24 @@ func execute_delayed_jump() -> void:
 
 func get_closest_player() -> Node2D:
 	var players = get_tree().get_nodes_in_group("player")
-	var closest = null
-	
-	# Enforce the maximum detection range limit
+	var closest: Node2D = null
 	var shortest_dist = detection_range 
 	
 	for p in players:
-		var dist = global_position.distance_to(p.global_position)
-		if dist < shortest_dist:
-			shortest_dist = dist
-			closest = p
+		if not is_instance_valid(p):
+			continue
 			
+		# If an AnimatedSprite2D was accidentally put in the "player" group, grab its parent CharacterBody2D instead
+		var candidate: Node = p
+		if candidate is AnimatedSprite2D and candidate.get_parent() is CharacterBody2D:
+			candidate = candidate.get_parent()
+			
+		if candidate is Node2D:
+			var dist = global_position.distance_to(candidate.global_position)
+			if dist < shortest_dist:
+				shortest_dist = dist
+				closest = candidate
+				
 	return closest
 
 
@@ -152,6 +160,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
+	DamageIndicator.spawn_damage(global_position, amount, false)
 	print("Enemy took ", amount, " damage! Health is now: ", health)
 
 	# Play the sound based on the type of attack
@@ -165,6 +174,7 @@ func take_damage(amount: int, hit_type: String = "melee") -> void:
 
 	if health <= 0:
 		print("Enemy defeated!")
+		death_sound.play()
 		set_physics_process(false)
 		$CollisionShape2D.set_deferred("disabled", true)
 		$Hitbox/CollisionShape2D.set_deferred("disabled", true)

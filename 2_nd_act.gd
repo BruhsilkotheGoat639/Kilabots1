@@ -4,7 +4,7 @@ extends Node2D
 
 @onready var timer_label = $CanvasLayer/TimerLabel # Adjust path to your Label
 @onready var player = $Plane # Adjust path to your player node
-@onready var hp_label = $CanvasLayer/HPLabel
+@onready var hp_label = $CanvasLayer/Healthbar/HPLabel
 @onready var fade = $Fading
 
 var time_left: float = 180.0 # 3 minutes in seconds

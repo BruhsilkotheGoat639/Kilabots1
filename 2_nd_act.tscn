@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://h24qk1pwc66o" path="res://procedural_clouds.gd" id="1_w17ux"]
 [ext_resource type="Script" uid="uid://d2rtojwxk3tbw" path="res://hacking.gd" id="2_1bc03"]
 [ext_resource type="PackedScene" uid="uid://75cp21pfuyc2" path="res://enemy_plane.tscn" id="2_aqusp"]
+[ext_resource type="AudioStream" uid="uid://wx7kkuu52led" path="res://Sounds/BufferUnderrun2.wav" id="5_t8f8x"]
+[ext_resource type="AudioStream" uid="uid://dnssspvxdpxof" path="res://Sounds/PhraseStutter2.wav" id="6_06jfm"]
+[ext_resource type="Script" uid="uid://d2vpsb5dxuchj" path="res://healthbarplane.gd" id="6_aqusp"]
 
 [sub_resource type="Gradient" id="Gradient_jgew0"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
@@ -137,9 +140,17 @@ offset_bottom = 750.0
 focus_mode = 0
 mouse_filter = 2
 
+[node name="HackedSound" type="AudioStreamPlayer2D" parent="Hacking" unique_id=35948902]
+stream = ExtResource("5_t8f8x")
+bus = &"Sound Effect"
+
+[node name="Hackedoverride" type="AudioStreamPlayer2D" parent="Hacking" unique_id=771145504]
+stream = ExtResource("6_06jfm")
+bus = &"Sound Effect"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1119810476]
 
-[node name="Plane" parent="." unique_id=436766004 groups=["player_plane"] instance=ExtResource("1_i1u0f")]
+[node name="Plane" parent="." unique_id=436766004 groups=["player", "player_plane"] instance=ExtResource("1_i1u0f")]
 position = Vector2(852, 263)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1184796232]
@@ -150,11 +161,20 @@ offset_top = 9.0
 offset_right = 1017.0
 offset_bottom = 53.0
 
-[node name="HPLabel" type="Label" parent="CanvasLayer" unique_id=309794930]
-offset_left = 84.0
-offset_top = 685.0
-offset_right = 436.0
-offset_bottom = 748.0
+[node name="Healthbar" type="ProgressBar" parent="CanvasLayer" unique_id=2043278376]
+offset_left = 35.0
+offset_top = 713.0
+offset_right = 519.0
+offset_bottom = 746.0
+show_percentage = false
+script = ExtResource("6_aqusp")
+
+[node name="HPLabel" type="Label" parent="CanvasLayer/Healthbar" unique_id=309794930]
+layout_mode = 0
+offset_left = 53.0
+offset_top = -68.0
+offset_right = 405.0
+offset_bottom = -5.0
 theme_override_colors/font_color = Color(0.7883869, 0, 0.038276557, 1)
 
 [node name="Enemy Spawnpoint" type="Node" parent="." unique_id=552701985]
@@ -184,6 +204,7 @@ position = Vector2(1145, 12)
 libraries/ = SubResource("AnimationLibrary_06jfm")
 
 [node name="Fadeing" type="ColorRect" parent="Fading" unique_id=1136865021]
+visible = false
 offset_right = 1316.0
 offset_bottom = 787.0
 color = Color(0, 0, 0, 1)

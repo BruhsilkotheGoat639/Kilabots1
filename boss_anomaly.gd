@@ -8,15 +8,18 @@ const HOVER_HEIGHT_OFFSET = -25.0
 
 const MAX_HEALTH = 500
 const MELEE_DAMAGE = 30
-const MELEE_RANGE = 85.0
+const MELEE_RANGE = 100.0
 const RANGED_MIN_DISTANCE = 150.0
 const BASIC_ATTACK_COOLDOWN = 5.0
 
 @export var detection_range: float = 350.0
 @export var boss_projectile_scene: PackedScene
+@export var boss_time_stop_projectile_scene: PackedScene
+
+@onready var time_stop_sound : AudioStreamPlayer2D = $TimeStopSound
 
 var health = MAX_HEALTH
-var current_phase = 3
+var current_phase = 1
 var is_doing_mechanic = false
 var can_basic_attack = true
 var phase_skill_ready = false
@@ -31,6 +34,8 @@ var base_sprite_y: float = 0.0
 @onready var hitbox_shape: CollisionShape2D = $Hitbox/CollisionShape2D
 @onready var hit_sound_melee: AudioStreamPlayer2D = $HitSoundMelee
 @onready var hit_sound_arrow: AudioStreamPlayer2D = $HitSoundArrow
+@onready var projectile_throw: AudioStreamPlayer2D = $Projectilethrow
+@onready var teleport_sound: AudioStreamPlayer2D = $Teleport
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -160,6 +165,7 @@ func cast_temporal_rewind() -> void:
 func cast_time_stop_barrage() -> void:
 	is_doing_mechanic = true
 	get_tree().paused = true
+	time_stop_sound.play()
 	
 	var target = get_nearest_player()
 	if not target:
@@ -177,6 +183,7 @@ func cast_time_stop_barrage() -> void:
 		for i in range(num_projectiles):
 			var angle = (TAU / num_projectiles) * i
 			var spawn_pos = target.global_position + Vector2(cos(angle), sin(angle)) * ring_radius
+			projectile_throw.play()
 			
 			global_position = spawn_pos
 			anim.flip_h = (target.global_position.x < global_position.x)
@@ -184,7 +191,7 @@ func cast_time_stop_barrage() -> void:
 			print("[Boss - Phase 3 Mechanic] Placed Time-Stop projectile ", i + 1, "/", num_projectiles)
 			
 			if boss_projectile_scene:
-				var proj = boss_projectile_scene.instantiate()
+				var proj = boss_time_stop_projectile_scene.instantiate()
 				get_tree().current_scene.add_child(proj)
 				proj.global_position = spawn_pos
 				var aim_dir = (target.global_position - spawn_pos).normalized()
@@ -285,6 +292,8 @@ func teleport_to_random_player() -> void:
 	if players.is_empty():
 		return
 		
+	teleport_sound.play()
+		
 	is_doing_mechanic = true
 	var random_target: Node2D = players.pick_random()
 	print("[Boss - Phase ", current_phase, "] Lost target! Teleporting to random player: ", random_target.name)
@@ -306,6 +315,7 @@ func teleport_to_random_player() -> void:
 
 func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
+	DamageIndicator.spawn_damage(global_position, amount, false)
 	print("[Boss - Phase ", current_phase, "] Took ", amount, " damage! Remaining HP: ", health, "/", MAX_HEALTH)
 	
 	var return_color = Color(0.3, 1.0, 1.0) if current_phase == 2 else Color.WHITE

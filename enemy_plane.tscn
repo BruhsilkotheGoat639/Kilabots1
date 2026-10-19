@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cg148pdifwc13" path="res://enemy_plane.gd" id="1_bj0im"]
 [ext_resource type="PackedScene" uid="uid://cit1s1l3vmkq" path="res://enemy_plane_bullet.tscn" id="2_b8yku"]
 [ext_resource type="Texture2D" uid="uid://dxegbxdma1ab6" path="res://Sprites/Fire Spirit Attack.png" id="3_wshm1"]
+[ext_resource type="AudioStream" uid="uid://d0fxhr6mdypjg" path="res://Sounds/Boom1.wav" id="4_b8yku"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8yku"]
 atlas = ExtResource("3_wshm1")
@@ -98,5 +99,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KamikazeHitbox" unique_id=535218368]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5rsg2")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=428963260]
+stream = ExtResource("4_b8yku")
+bus = &"Sound Effect"
+
+[node name="WispHit" type="AudioStreamPlayer2D" parent="." unique_id=1089930154]
+stream = ExtResource("4_b8yku")
+volume_db = -21.895
+max_polyphony = 8
+bus = &"Sound Effect"
 
 [connection signal="body_entered" from="KamikazeHitbox" to="." method="_on_kamikaze_hitbox_body_entered"]

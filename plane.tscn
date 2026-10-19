@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c72v00hhx3qje" path="res://plane.gd" id="1_s46f0"]
 [ext_resource type="PackedScene" uid="uid://ntohesv8epau" path="res://plane_bullet.tscn" id="2_dpar4"]
 [ext_resource type="Texture2D" uid="uid://c6fkcbw4xt7lx" path="res://Sprites/helicopter moving.png" id="3_nqs3l"]
+[ext_resource type="AudioStream" uid="uid://dyqny4lt2368a" path="res://Sounds/Plane firing.wav" id="4_6xwvw"]
+[ext_resource type="AudioStream" uid="uid://dmm8m5r535ja3" path="res://Sounds/PlaneHit.wav" id="5_28khi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpar4"]
 size = Vector2(45, 39)
@@ -74,3 +76,13 @@ shape = SubResource("RectangleShape2D_dpar4")
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_ye4pl")
 animation = &"Flying"
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=689730799]
+stream = ExtResource("4_6xwvw")
+max_polyphony = 15
+bus = &"Sound Effect"
+
+[node name="PlaneHit" type="AudioStreamPlayer2D" parent="." unique_id=1825445031]
+stream = ExtResource("5_28khi")
+max_polyphony = 15
+bus = &"Sound Effect"

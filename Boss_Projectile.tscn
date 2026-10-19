@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://wwdpev20kr0m" path="res://boss_projectile.gd" id="1_08d15"]
 [ext_resource type="Texture2D" uid="uid://d23kaoujq0u6u" path="res://Sprites/Boss/fireball buseng.png" id="2_b1wjt"]
+[ext_resource type="AudioStream" uid="uid://dr0ptjkat7l73" path="res://Sounds/Boom3.wav" id="3_b1wjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ndhl"]
-size = Vector2(48, 29)
+size = Vector2(76, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jf1q3"]
 atlas = ExtResource("2_b1wjt")
@@ -58,8 +59,12 @@ script = ExtResource("1_08d15")
 shape = SubResource("RectangleShape2D_2ndhl")
 
 [node name="Arrowsprite" type="AnimatedSprite2D" parent="." unique_id=1953139628]
-position = Vector2(2.3841858e-07, -1.0000002)
-scale = Vector2(0.2675, 0.18749999)
+position = Vector2(11.000008, 6.000004)
+scale = Vector2(0.71312505, 0.58312505)
 sprite_frames = SubResource("SpriteFrames_n8vft")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=999004835]
+stream = ExtResource("3_b1wjt")
+bus = &"Sound Effect"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bn2rog1n5q3t"]
 
-[ext_resource type="Script" uid="uid://51lowr4josqc" path="res://melee_enemy.gd" id="1_vn61j"]
+[ext_resource type="Script" uid="uid://51lowr4josqc" path="res://Enemies/melee_enemy.gd" id="1_vn61j"]
 [ext_resource type="Texture2D" uid="uid://dvb6bpnh6cxby" path="res://Sprites/Mummy/mummy_attack.png" id="2_v4p2e"]
 [ext_resource type="Texture2D" uid="uid://donw2x37dlqyr" path="res://Sprites/Mummy/mummy.png" id="2_vn61j"]
 [ext_resource type="Texture2D" uid="uid://cr6bya368bfwn" path="res://Sprites/Mummy/mummy death.png" id="3_pd0mh"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://df64nigxp16lc" path="res://Sprites/Mummy/mummy_run.png" id="7_wxc1y"]
 [ext_resource type="AudioStream" uid="uid://dk183ftkgr4aa" path="res://Sounds/EnemyHit_Sword.wav" id="8_mfnuj"]
 [ext_resource type="AudioStream" uid="uid://40sh1yxgckic" path="res://Sounds/EnemyHit_Range.wav" id="9_tvsrn"]
+[ext_resource type="AudioStream" uid="uid://b8imbxluwmu6t" path="res://Sounds/Death.wav" id="10_4p71d"]
+[ext_resource type="Script" uid="uid://bkv2poocnvavo" path="res://Enemies/HealthBar.gd" id="10_41dl4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn61j"]
 size = Vector2(46, 58)
@@ -376,6 +378,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgew0"]
+bg_color = Color(0.6416959, 0, 0.053477325, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7wv7"]
+bg_color = Color(0, 1, 0, 1)
+
 [node name="MeleeEnemy" type="CharacterBody2D" unique_id=164289940 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
@@ -401,12 +409,29 @@ position = Vector2(20, 30)
 [node name="MummyAnimation" type="AnimatedSprite2D" parent="." unique_id=1784793027]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_utr63")
-animation = &"Attack"
+animation = &"Jump"
 
 [node name="HitSoundMelee" type="AudioStreamPlayer2D" parent="." unique_id=1404512328]
 stream = ExtResource("8_mfnuj")
+bus = &"Sound Effect"
 
 [node name="HitSoundArrow" type="AudioStreamPlayer2D" parent="." unique_id=452216797]
 stream = ExtResource("9_tvsrn")
+bus = &"Sound Effect"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=2049442686]
+stream = ExtResource("10_4p71d")
+bus = &"Sound Effect"
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=949960791]
+offset_left = -22.0
+offset_top = -21.0
+offset_right = 24.0
+offset_bottom = -16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jgew0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t7wv7")
+value = 100.0
+show_percentage = false
+script = ExtResource("10_41dl4")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
