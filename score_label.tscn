@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cnvyqxebkftpk"]
+
+[ext_resource type="Script" uid="uid://c7gtxkbkgh7sn" path="res://score_label.gd" id="1_uhy7g"]
+
+[node name="ScoreLabel" type="CanvasLayer" unique_id=422824431]
+script = ExtResource("1_uhy7g")
+
+[node name="Label" type="Label" parent="." unique_id=1421694649]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "Score:"

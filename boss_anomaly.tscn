@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ct5l1gcdoopoy" path="res://Sounds/TimeStopSound.wav" id="11_yij0q"]
 [ext_resource type="AudioStream" uid="uid://dhi6wes8tdv3u" path="res://Sounds/ProjectileThrow.wav" id="12_cv45y"]
 [ext_resource type="AudioStream" uid="uid://c7rpl7rdqj2eu" path="res://Sounds/Teleport.wav" id="13_cv45y"]
+[ext_resource type="AudioStream" uid="uid://r3uvq0cv2f54" path="res://Sounds/Explosionish.wav" id="15_mpjqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cv45y"]
 atlas = ExtResource("4_fkpda")
@@ -454,4 +455,10 @@ bus = &"Sound Effect"
 process_mode = 3
 stream = ExtResource("13_cv45y")
 volume_db = 7.82
+bus = &"Sound Effect"
+
+[node name="Explosionish" type="AudioStreamPlayer2D" parent="." unique_id=814967433]
+process_mode = 3
+stream = ExtResource("15_mpjqd")
+volume_db = 24.0
 bus = &"Sound Effect"

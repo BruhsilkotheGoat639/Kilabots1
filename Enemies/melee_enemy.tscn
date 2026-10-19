@@ -55,7 +55,7 @@ tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.06666667, 0.46666667, 0.8866666),
+"times": PackedFloat32Array(0.06666667, 0.46666667, 0.73333335),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -409,7 +409,7 @@ position = Vector2(20, 30)
 [node name="MummyAnimation" type="AnimatedSprite2D" parent="." unique_id=1784793027]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_utr63")
-animation = &"Jump"
+animation = &"Attack"
 
 [node name="HitSoundMelee" type="AudioStreamPlayer2D" parent="." unique_id=1404512328]
 stream = ExtResource("8_mfnuj")

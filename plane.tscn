@@ -79,6 +79,7 @@ animation = &"Flying"
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=689730799]
 stream = ExtResource("4_6xwvw")
+volume_db = -10.948
 max_polyphony = 15
 bus = &"Sound Effect"
 

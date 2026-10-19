@@ -115,6 +115,7 @@ func take_damage(amount: int, hit_type: String = "melee") -> void:
 			hit_sound_arrow.play()
 	
 	if health <= 0:
+		ScoreManager.add_score(5)
 		queue_free()
 		return
 		

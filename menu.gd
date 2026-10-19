@@ -3,6 +3,7 @@ extends Control
 @onready var main_buttons = $HBoxContainer
 
 func _ready() -> void:
+	ScoreManager.reset_score()
 	main_buttons.show()
 	# Connect to the global Autoload's custom signal
 	SettingsPanel.settings_closed.connect(_on_settings_closed)

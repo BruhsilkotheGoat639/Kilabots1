@@ -65,4 +65,5 @@ func spawn_enemy() -> void:
 
 func trigger_victory() -> void:
 	timer_label.text = "00:00 - SURVIVED!"
+	get_tree().change_scene_to_file("res://boss_fight_stage.tscn")
 	# Add victory transition code here (e.g., loading the next level)

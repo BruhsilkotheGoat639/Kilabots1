@@ -1708,10 +1708,10 @@ color = Color(0, 0, 0, 0)
 [node name="Players" type="Node" parent="." unique_id=1255047892]
 
 [node name="P2" parent="Players" unique_id=1217377614 groups=["player"] instance=ExtResource("5_0a0np")]
-position = Vector2(3134, 693)
+position = Vector2(83, 700)
 
 [node name="P1" parent="Players" unique_id=281511241 groups=["player"] instance=ExtResource("4_tfo34")]
-position = Vector2(3078, 681)
+position = Vector2(27, 688)
 
 [node name="Enemies" type="Node" parent="." unique_id=288225070]
 

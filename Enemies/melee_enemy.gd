@@ -173,6 +173,7 @@ func take_damage(amount: int, hit_type: String = "melee") -> void:
 	flash_red()
 
 	if health <= 0:
+		ScoreManager.add_score(10)
 		print("Enemy defeated!")
 		death_sound.play()
 		set_physics_process(false)

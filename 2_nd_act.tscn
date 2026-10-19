@@ -123,18 +123,20 @@ script = ExtResource("2_1bc03")
 
 [node name="Input" type="TextEdit" parent="Hacking" unique_id=1442666885]
 layout_mode = 0
-offset_right = 522.0
-offset_bottom = 100.0
+offset_left = 5.0
+offset_top = 114.0
+offset_right = 527.0
+offset_bottom = 214.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Hacking" unique_id=808898720]
 layout_mode = 0
-offset_top = 102.0
+offset_top = 214.0
 offset_right = 522.0
 offset_bottom = 748.0
 
 [node name="Text" type="TextEdit" parent="Hacking" unique_id=748585371]
 layout_mode = 0
-offset_top = 101.0
+offset_top = 215.0
 offset_right = 521.0
 offset_bottom = 750.0
 focus_mode = 0
@@ -147,6 +149,12 @@ bus = &"Sound Effect"
 [node name="Hackedoverride" type="AudioStreamPlayer2D" parent="Hacking" unique_id=771145504]
 stream = ExtResource("6_06jfm")
 bus = &"Sound Effect"
+
+[node name="ColorRect" type="ColorRect" parent="Hacking" unique_id=226205479]
+layout_mode = 0
+offset_right = 526.0
+offset_bottom = 112.0
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1119810476]
 

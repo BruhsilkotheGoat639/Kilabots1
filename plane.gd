@@ -58,6 +58,7 @@ func heal(amount: float) -> void:
 
 func take_damage(amount: float) -> void:
 	health -= amount
+	ScoreManager.subtract_score(1)
 	plane_hit.play()
 	DamageIndicator.spawn_damage(global_position, int(max(1, amount)), true)
 	print("Player Plane HP: ", health)

@@ -158,6 +158,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	ScoreManager.subtract_score(2)
 	hurt_sound.play()
 	DamageIndicator.spawn_damage(global_position, amount, true)
 	health = max(health, 0) # Prevents health from dropping below 0

@@ -9,6 +9,7 @@ var is_game_over: bool = false
 
 
 func _ready() -> void:
+	ScoreManager.reset_score()
 	# Register both players to the camera on startup
 	camera.add_target(player1)
 	camera.add_target(player2)

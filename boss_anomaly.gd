@@ -36,7 +36,7 @@ var base_sprite_y: float = 0.0
 @onready var hit_sound_arrow: AudioStreamPlayer2D = $HitSoundArrow
 @onready var projectile_throw: AudioStreamPlayer2D = $Projectilethrow
 @onready var teleport_sound: AudioStreamPlayer2D = $Teleport
-
+@onready var explosion_sound: AudioStreamPlayer2D = $Explosionish
 func _ready() -> void:
 	add_to_group("enemy")
 	add_to_group("boss")
@@ -315,6 +315,7 @@ func teleport_to_random_player() -> void:
 
 func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
+
 	DamageIndicator.spawn_damage(global_position, amount, false)
 	print("[Boss - Phase ", current_phase, "] Took ", amount, " damage! Remaining HP: ", health, "/", MAX_HEALTH)
 	
@@ -331,7 +332,6 @@ func take_damage(amount: int, hit_type: String = "melee") -> void:
 			
 	check_phase_transition()
 
-	
 	if health <= 0:
 		die()
 
@@ -344,21 +344,23 @@ func check_phase_transition() -> void:
 		print("   BOSS ENTERED PHASE 2: TEMPORAL REWIND (HP: ", health, ")")
 		print("==================================================")
 	elif health <= 125 and current_phase == 2:
-			current_phase = 3
-			phase_skill_ready = true
-			print("==================================================")
-			print("   BOSS ENTERED PHASE 3: SHATTERED REALITY (HP: ", health, ")")
-			print("==================================================")
+		current_phase = 3
+		phase_skill_ready = true
+		print("==================================================")
+		print("   BOSS ENTERED PHASE 3: SHATTERED REALITY (HP: ", health, ")")
+		print("==================================================")
 
 
 func die() -> void:
-	print("[Boss - Phase ", current_phase, "] Boss defeated!")
+	print("[Boss - Phase ", current_phase, "] Boss defeated! Loading Win Screen...")
 	is_doing_mechanic = true
 	melee_target = null
 	attack_timer.stop()
 	anim_player.stop()
 	hitbox_shape.set_deferred("disabled", true)
 	get_tree().paused = false
+	explosion_sound.play()
 	anim.play("Death")
+	ScoreManager.add_score(500)
 	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	get_tree().change_scene_to_file("res://win_screen.tscn")

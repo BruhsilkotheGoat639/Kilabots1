@@ -84,6 +84,7 @@ func take_damage(amount: float) -> void:
 		return
 		
 	health -= amount
+	ScoreManager.add_score(1)
 	hit_sound.play()
 	DamageIndicator.spawn_damage(global_position, int(max(1, amount)), false)
 	if health <= 0:
