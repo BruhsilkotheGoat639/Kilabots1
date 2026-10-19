@@ -210,7 +210,6 @@ offset_bottom = 21.0
 theme_override_styles/background = SubResource("StyleBoxFlat_b6yyw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8741j")
 value = 100.0
-exp_edit = true
 show_percentage = false
 
 [node name="Hurtsound" type="AudioStreamPlayer2D" parent="." unique_id=2089561260]

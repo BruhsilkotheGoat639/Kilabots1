@@ -19,7 +19,7 @@ const PLATFORM_LAYER := 2
 
 var lifesteal := 2
 var max_health := 100.0
-var health := 150
+var health := 100.0
 var active_state := STATE.IDLE
 var facing_direction := 1.0 
 var damage_amount = 30
@@ -137,7 +137,7 @@ func perform_attack() -> void:
 	health = min(health + lifesteal, max_health) # Increases health by 5 without exceeding max health (150)
 	if health_bar:
 		health_bar.value = health
-	print("Player Lifesteal 5 hp! Health is now: ", health)
+	print("Player Lifesteal 2 hp! Health is now: ", health)
 	# ------------------------------------
 	
 	attack_anim_player.play("AttackAnimation")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo70qtalktfty" path="res://game_over.gd" id="1_yxx3c"]
 [ext_resource type="Texture2D" uid="uid://o1m5npddcp2l" path="res://Sprites/DEFEAT BACKGROUND.jpg" id="2_ccer4"]
+[ext_resource type="AudioStream" uid="uid://bqivdeu1aniaf" path="res://Sounds/Arcade_Retro_Game_Over_-_Sound_Effect_Final_Cut.wav" id="3_ccer4"]
 
 [node name="GameOver" type="CanvasLayer" unique_id=1957735891]
 process_mode = 3
@@ -15,6 +16,7 @@ offset_top = -22.0
 offset_right = 1754.0
 offset_bottom = 1307.5369
 scale = Vector2(0.73112136, 0.59193546)
+mouse_filter = 2
 texture = ExtResource("2_ccer4")
 
 [node name="Retry" type="Button" parent="." unique_id=131845292]
@@ -30,3 +32,7 @@ offset_top = 498.0
 offset_right = 558.0
 offset_bottom = 585.0
 text = "Home"
+
+[node name="GameoverSound" type="AudioStreamPlayer2D" parent="." unique_id=1389957069]
+stream = ExtResource("3_ccer4")
+bus = &"Sound Effect"

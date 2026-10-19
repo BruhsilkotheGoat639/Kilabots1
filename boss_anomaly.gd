@@ -17,6 +17,7 @@ const BASIC_ATTACK_COOLDOWN = 5.0
 @export var boss_time_stop_projectile_scene: PackedScene
 
 @onready var time_stop_sound : AudioStreamPlayer2D = $TimeStopSound
+@onready var health_bar: ProgressBar = $HealthBar
 
 var health = MAX_HEALTH
 var current_phase = 1
@@ -41,6 +42,10 @@ func _ready() -> void:
 	add_to_group("enemy")
 	add_to_group("boss")
 	
+	if health_bar:
+		health_bar.max_value = MAX_HEALTH
+		health_bar.value = health
+
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	base_sprite_y = anim.position.y
 	
@@ -315,6 +320,8 @@ func teleport_to_random_player() -> void:
 
 func take_damage(amount: int, hit_type: String = "melee") -> void:
 	health -= amount
+	if health_bar:
+		health_bar.value = health
 
 	DamageIndicator.spawn_damage(global_position, amount, false)
 	print("[Boss - Phase ", current_phase, "] Took ", amount, " damage! Remaining HP: ", health, "/", MAX_HEALTH)

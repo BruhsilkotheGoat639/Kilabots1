@@ -2,11 +2,13 @@ extends CanvasLayer
 
 @onready var retry_button = $Retry
 @onready var menu_button = $Home
+@onready var gameover_sound: AudioStreamPlayer2D = $GameoverSound
 
 var is_game_over: bool = false
 var level_had_players: bool = false
 
 func _ready() -> void:
+	get_tree().paused = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	
@@ -51,7 +53,7 @@ func trigger_game_over() -> void:
 	
 	# Slight delay so players can see the final hit/death animation before freezing
 	await get_tree().create_timer(0.8, true, false, true).timeout
-	
+	gameover_sound.play()
 	get_tree().paused = true
 	show()
 
@@ -68,3 +70,7 @@ func _on_menu_pressed() -> void:
 	hide()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://menu.tscn")
+
+
+func _on_home_pressed() -> void:
+	pass # Replace with function body.

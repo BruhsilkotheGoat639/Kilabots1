@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://di7w2sajk5e03" path="res://win_screen.gd" id="1_wmwda"]
 [ext_resource type="Texture2D" uid="uid://bcid5rk10l7qc" path="res://Sprites/VICTORY.jpg" id="2_l5t5q"]
+[ext_resource type="AudioStream" uid="uid://cxgahpq228p0c" path="res://Sounds/VictoryChord1.wav" id="3_l5t5q"]
 
 [node name="GameOver" type="CanvasLayer" unique_id=1957735891]
 process_mode = 3
@@ -41,5 +42,9 @@ theme_override_colors/font_shadow_color = Color(0.78039217, 0.95686275, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "High Score:"
+
+[node name="Victorysound" type="AudioStreamPlayer2D" parent="." unique_id=1307067740]
+stream = ExtResource("3_l5t5q")
+bus = &"Sound Effect"
 
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]

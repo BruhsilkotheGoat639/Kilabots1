@@ -1,8 +1,12 @@
 extends CanvasLayer
 
-@onready var score_label: Label = $"High Score" # Matches your node name on the left
+
+
+@onready var score_label: Label = $"High Score"
+@onready var victory_sound: AudioStreamPlayer2D = $Victorysound# Matches your node name on the left
 
 func _ready() -> void:
+	victory_sound.play()
 	# Fetch the final score from your global ScoreManager singleton
 	if ScoreManager:
 		score_label.text = "Score: " + str(ScoreManager.score)
