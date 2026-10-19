@@ -8,7 +8,7 @@ func _ready() -> void:
 	SettingsPanel.settings_closed.connect(_on_settings_closed)
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://1_st_level.tscn")
+	get_tree().change_scene_to_file("res://Tutorial.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false 

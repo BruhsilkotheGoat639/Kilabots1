@@ -14,6 +14,58 @@
 [ext_resource type="Script" uid="uid://dguqgsxirhbw5" path="res://horde_detection.gd" id="12_ddrvt"]
 [ext_resource type="Script" uid="uid://giipyfy4ee32" path="res://next_scene_detector.gd" id="13_ip2fs"]
 
+[sub_resource type="Animation" id="Animation_jm7cm"]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fadeing:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2h8ax"]
+resource_name = "Fade in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fadeing:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qb8r4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fadeing:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmgb7"]
+_data = {
+&"Fade Out": SubResource("Animation_jm7cm"),
+&"Fade in": SubResource("Animation_2h8ax"),
+&"RESET": SubResource("Animation_qb8r4")
+}
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ip2fs"]
 texture = ExtResource("3_ggqqq")
 0:0/0 = 0
@@ -1629,58 +1681,6 @@ sources/0 = SubResource("TileSetAtlasSource_1n4wb")
 sources/1 = SubResource("TileSetAtlasSource_50nm6")
 sources/2 = SubResource("TileSetAtlasSource_nb35s")
 
-[sub_resource type="Animation" id="Animation_jm7cm"]
-resource_name = "Fade Out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fadeing:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2h8ax"]
-resource_name = "Fade in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fadeing:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_qb8r4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fadeing:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmgb7"]
-_data = {
-&"Fade Out": SubResource("Animation_jm7cm"),
-&"Fade in": SubResource("Animation_2h8ax"),
-&"RESET": SubResource("Animation_qb8r4")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r86n2"]
 size = Vector2(739, 178)
 
@@ -1690,13 +1690,28 @@ size = Vector2(356, 158)
 [node name="1stLevel" type="Node2D" unique_id=1074095983]
 script = ExtResource("1_makb8")
 
+[node name="DynamicCamera" type="Camera2D" parent="." unique_id=578019986]
+position = Vector2(644, 390)
+script = ExtResource("2_jahsi")
+
+[node name="Fades" type="AnimationPlayer" parent="DynamicCamera" unique_id=754254601]
+libraries/ = SubResource("AnimationLibrary_jmgb7")
+
+[node name="Fadeing" type="ColorRect" parent="DynamicCamera" unique_id=84629139]
+z_index = 3
+offset_left = -2019.0
+offset_top = -1128.0
+offset_right = 4511.0
+offset_bottom = 1425.0
+color = Color(0, 0, 0, 0)
+
 [node name="Players" type="Node" parent="." unique_id=1255047892]
 
 [node name="P2" parent="Players" unique_id=1217377614 groups=["player"] instance=ExtResource("5_0a0np")]
-position = Vector2(120, 679)
+position = Vector2(3134, 693)
 
 [node name="P1" parent="Players" unique_id=281511241 groups=["player"] instance=ExtResource("4_tfo34")]
-position = Vector2(64, 667)
+position = Vector2(3078, 681)
 
 [node name="Enemies" type="Node" parent="." unique_id=288225070]
 
@@ -1759,21 +1774,6 @@ tile_set = SubResource("TileSet_t7wv7")
 [node name="Decoration" type="TileMapLayer" parent="Worldstuff" unique_id=43484900]
 tile_map_data = PackedByteArray("AAApACUAAgACAAYAAAApACYAAgACAAcAAAAqACUAAgADAAYAAAAqACYAAgADAAcAAAAtACAAAgACAAYAAAAtACEAAgACAAcAAAAuACAAAgADAAYAAAAuACEAAgADAAcAAABCACIAAgACAAYAAABCACMAAgACAAcAAABDACIAAgADAAYAAABDACMAAgADAAcAAAA+ACsAAgAAAAYAAAA+ACwAAgAAAAcAAAA/ACsAAgABAAYAAAA/ACwAAgABAAcAAAA5ACsAAgAEAAYAAAA5ACwAAgAEAAcAAAA6ACsAAgAFAAYAAAA6ACwAAgAFAAcAAAAtACUAAgAEAAYAAAAtACYAAgAEAAcAAAAuACUAAgAFAAYAAAAuACYAAgAFAAcAAABTACsAAgAEAAYAAABTACwAAgAEAAcAAABUACsAAgAFAAYAAABUACwAAgAFAAcAAADEACsAAgACAAYAAADEACwAAgACAAcAAADFACsAAgADAAYAAADFACwAAgADAAcAAACIACsAAQAAABIAAACIACwAAQAAABMAAACJACsAAQABABIAAACJACwAAQABABMAAACKACsAAQACABIAAACKACwAAQACABMAAACLACsAAQADABIAAACLACwAAQADABMAAACMACsAAQAEABIAAACMACwAAQAEABMAAACNACsAAQAFABIAAACNACwAAQAFABMAAACKACkAAQAGABIAAACKACoAAQAGABMAAACLACkAAQAHABIAAACLACoAAQAHABMAAACKACAAAQACAA4AAACKACEAAQACAA8AAACKACIAAQACABAAAACLACAAAQADAA4AAACLACEAAQADAA8AAACLACIAAQADABAAAACKACMAAQACAA4AAACKACQAAQACAA8AAACKACUAAQACABAAAACLACMAAQADAA4AAACLACQAAQADAA8AAACLACUAAQADABAAAACKACYAAQACAA4AAACKACcAAQACAA8AAACKACgAAQACABAAAACLACYAAQADAA4AAACLACcAAQADAA8AAACLACgAAQADABAAAACKAB4AAQAGABAAAACKAB8AAQAGABEAAACLAB4AAQAHABAAAACLAB8AAQAHABEAAACKAA0AAQACAA8AAACLAA0AAQADAA8AAACKAA4AAQACAA4AAACKAA8AAQACAA8AAACLAA4AAQADAA4AAACLAA8AAQADAA8AAACKABAAAQACAA4AAACKABEAAQACAA8AAACLABAAAQADAA4AAACLABEAAQADAA8AAACKABIAAQACAA4AAACKABMAAQACAA8AAACLABIAAQADAA4AAACLABMAAQADAA8AAACKABQAAQACAA4AAACKABUAAQACAA8AAACLABQAAQADAA4AAACLABUAAQADAA8AAACKABYAAQACAA4AAACKABcAAQACAA8AAACLABYAAQADAA4AAACLABcAAQADAA8AAACKABgAAQACAA4AAACKABkAAQACAA8AAACLABgAAQADAA4AAACLABkAAQADAA8AAACKABoAAQACAA4AAACKABsAAQACAA8AAACLABoAAQADAA4AAACLABsAAQADAA8AAACKABwAAQACAA4AAACKAB0AAQACAA8AAACLABwAAQADAA4AAACLAB0AAQADAA8AAACKAAoAAQACAA8AAACLAAoAAQADAA8AAACKAAsAAQACAA4AAACKAAwAAQACAA8AAACLAAsAAQADAA4AAACLAAwAAQADAA8AAACIAAgAAQAAAAoAAACIAAkAAQAAAAsAAACJAAgAAQABAAoAAACJAAkAAQABAAsAAACKAAgAAQACAAoAAACKAAkAAQACAAsAAACLAAgAAQADAAoAAACLAAkAAQADAAsAAACMAAgAAQAEAAoAAACMAAkAAQAEAAsAAACNAAgAAQAFAAoAAACNAAkAAQAFAAsAAAB2ACwAAQAEAA0AAAB3ACwAAQAFAA0AAACVACwAAQAEAA0AAACWACwAAQAFAA0AAAAUACMAAQAAAAoAAAAUACQAAQAAAAsAAAAVACMAAQABAAoAAAAVACQAAQABAAsAAAAWACMAAQACAAoAAAAWACQAAQACAAsAAAAXACMAAQADAAoAAAAXACQAAQADAAsAAAAYACMAAQAEAAoAAAAYACQAAQAEAAsAAAAZACMAAQAFAAoAAAAZACQAAQAFAAsAAAAUACsAAQAAABIAAAAUACwAAQAAABMAAAAVACsAAQABABIAAAAVACwAAQABABMAAAAWACsAAQACABIAAAAWACwAAQACABMAAAAXACsAAQADABIAAAAXACwAAQADABMAAAAYACsAAQAEABIAAAAYACwAAQAEABMAAAAZACsAAQAFABIAAAAZACwAAQAFABMAAAAWACUAAQACAAwAAAAWACYAAQACAA0AAAAWACcAAQACAA4AAAAWACgAAQACAA8AAAAWACkAAQACABAAAAAWACoAAQACABEAAAAXACUAAQADAAwAAAAXACYAAQADAA0AAAAXACcAAQADAA4AAAAXACgAAQADAA8AAAAXACkAAQADABAAAAAXACoAAQADABEAAAC1ACsAAgACAAAAAAC1ACwAAgACAAEAAAC2ACsAAgADAAAAAAC2ACwAAgADAAEAAACpACsAAgAEAAYAAACpACwAAgAEAAcAAACqACsAAgAFAAYAAACqACwAAgAFAAcAAACrACsAAgAEAAYAAACrACwAAgAEAAcAAACsACsAAgAFAAYAAACsACwAAgAFAAcAAACtACsAAgAEAAYAAACtACwAAgAEAAcAAACuACsAAgAFAAYAAACuACwAAgAFAAcAAACvACsAAgAEAAYAAACvACwAAgAEAAcAAACwACsAAgAFAAYAAACwACwAAgAFAAcAAACxACsAAgAEAAYAAACxACwAAgAEAAcAAACyACsAAgAFAAYAAACyACwAAgAFAAcAAACzACsAAgAEAAYAAACzACwAAgAEAAcAAAC0ACsAAgAFAAYAAAC0ACwAAgAFAAcAAAC3ACsAAgAEAAgAAAC3ACwAAgAEAAkAAAC4ACsAAgAFAAgAAAC4ACwAAgAFAAkAAAC5ACsAAgAEAAgAAAC5ACwAAgAEAAkAAAC6ACsAAgAFAAgAAAC6ACwAAgAFAAkAAAC7ACsAAgAEAAgAAAC7ACwAAgAEAAkAAAC8ACsAAgAFAAgAAAC8ACwAAgAFAAkAAAC9ACsAAgAEAAgAAAC9ACwAAgAEAAkAAAC+ACsAAgAFAAgAAAC+ACwAAgAFAAkAAAC/ACsAAgAEAAgAAAC/ACwAAgAEAAkAAADAACsAAgAFAAgAAADAACwAAgAFAAkAAADBACsAAgAEAAgAAADBACwAAgAEAAkAAADCACsAAgAFAAgAAADCACwAAgAFAAkAAADHACsAAgAAAAgAAADHACwAAgAAAAkAAADIACwAAgABAAkAAADJACsAAgAAAAgAAADJACwAAgAAAAkAAADKACwAAgABAAkAAADLACsAAgAAAAgAAADLACwAAgAAAAkAAADMACwAAgABAAkAAADRACwAAgACAAMAAADSACwAAgADAAMAAADOACsAAgAGAAIAAADOACwAAgAGAAMAAADPACsAAgAHAAIAAADPACwAAgAHAAMAAAA=")
 tile_set = SubResource("TileSet_dhbk0")
-
-[node name="DynamicCamera" type="Camera2D" parent="." unique_id=578019986]
-position = Vector2(644, 390)
-script = ExtResource("2_jahsi")
-
-[node name="Fades" type="AnimationPlayer" parent="DynamicCamera" unique_id=754254601]
-libraries/ = SubResource("AnimationLibrary_jmgb7")
-
-[node name="Fadeing" type="ColorRect" parent="DynamicCamera" unique_id=84629139]
-z_index = 3
-offset_left = -2019.0
-offset_top = -1128.0
-offset_right = 4511.0
-offset_bottom = 1425.0
-color = Color(0, 0, 0, 0)
 
 [node name="HordeDetection" type="Area2D" parent="." unique_id=1593201653]
 collision_mask = 8

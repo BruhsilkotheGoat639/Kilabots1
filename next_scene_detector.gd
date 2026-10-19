@@ -1,7 +1,7 @@
 extends Area2D
 
 # The path to your next level
-@export var next_scene_path: String = "res://2_nd_act.tscn"
+@export var next_scene_path: String = "res://Tutorial.tscn"
 @onready var fade = $"../DynamicCamera/Fades"
 
 var players_in_zone: int = 0
